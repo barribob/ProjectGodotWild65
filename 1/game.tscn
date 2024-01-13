@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=4 format=3 uid="uid://dh8efijj0mc1x"]
+
+[ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_or4yx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mbahu"]
 size = Vector2(20, 10)
@@ -18,3 +20,5 @@ environment = SubResource("Environment_4ndlc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.62418, 0.781281, 0, -0.781281, 0.62418, 0, 4.29437, 0)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("1_or4yx")]
