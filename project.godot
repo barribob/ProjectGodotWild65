@@ -18,11 +18,16 @@ config/icon="res://icon.png"
 [autoload]
 
 SceneLoader="*res://App/Scripts/SceneLoader.gd"
+Console="*res://addons/console/Console.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [gui]
 

@@ -15,7 +15,8 @@ data_*/
 mono_crash.*.json
 
 # Export folders and addons
-addons/
+addons/previous-tab/
+addons/script-ide/
 exports/
 Exports/
 
