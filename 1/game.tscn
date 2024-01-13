@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh8efijj0mc1x"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mbahu"]
+size = Vector2(20, 10)
+
+[sub_resource type="Environment" id="Environment_4ndlc"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_mbahu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.376418, 0.92645, 0, -0.92645, 0.376418, 0, 5.32587, 3.72804)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ndlc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.62418, 0.781281, 0, -0.781281, 0.62418, 0, 4.29437, 0)
