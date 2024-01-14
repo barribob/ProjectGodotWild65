@@ -14,6 +14,7 @@ var current_ammo: int = 5
 var reload_time = 1.0
 var reload_cooldown = 0.0
 var is_reloading = false
+var shoot_button_down = false
 
 func _process(delta):
     reticle.global_position = Utils.get_3d_mouse_pos(0.1, self, get_viewport().get_camera_3d())
@@ -27,22 +28,23 @@ func _process(delta):
     
     shoot_cooldown = clampf(shoot_cooldown - delta, 0, shoot_interval)
 
-    if not Input.is_action_pressed("shoot") and not is_reloading:
+    if shoot_button_down and Utils.leq(shoot_cooldown, 0) and current_ammo > 0:
+        shoot()
+        fired.emit()
+        shoot_cooldown = shoot_interval
+        current_ammo -= 1
+        is_reloading = false
+        reload_cooldown = 0 # cancel any in-progress reloads
+        if current_ammo == 0:
+            reload_cooldown = reload_time
+            is_reloading = true
+    elif not is_reloading:
         reload_cooldown = reload_time
         is_reloading = true
         
 func _unhandled_input(event):
-    if event is InputEventMouseButton and event.is_action_pressed("shoot"):
-        if Utils.leq(shoot_cooldown, 0) and current_ammo > 0:
-            shoot()
-            fired.emit()
-            shoot_cooldown = shoot_interval
-            current_ammo -= 1
-            is_reloading = false
-            reload_cooldown = 0 # cancel any in-progress reloads
-            if current_ammo == 0:
-                reload_cooldown = reload_time
-                is_reloading = true
+    if event is InputEventMouseButton and event.is_action("shoot"):
+        shoot_button_down = event.is_pressed()
 
 func shoot():
     var b = projectile.instantiate()
