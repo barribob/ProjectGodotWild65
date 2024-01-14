@@ -1,5 +1,7 @@
 extends Node3D
 
+signal fired
+
 @onready var reticle = $Reticle
 @onready var pivot = $"../RotationalPivot"
 @onready var projectile_output = $"../RotationalPivot/Marker3D"
@@ -24,6 +26,7 @@ func _process(delta):
     shoot_cooldown = clampf(shoot_cooldown - delta, 0, shoot_interval)
     if Input.is_action_pressed("shoot") and Utils.leq(shoot_cooldown, 0) and current_ammo > 0:
         shoot()
+        fired.emit()
         shoot_cooldown = shoot_interval
         current_ammo -= 1
         if current_ammo == 0:

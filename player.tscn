@@ -52,4 +52,5 @@ script = ExtResource("3_j554h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_qk3w5")
 
+[connection signal="fired" from="ShootHandler" to="." method="_on_shoot_handler_fired"]
 [connection signal="damaged" from="Damageable" to="." method="_on_damageable_damaged"]
