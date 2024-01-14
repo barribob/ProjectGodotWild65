@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://l15ou16u2m26"]
+[gd_scene load_steps=8 format=3 uid="uid://l15ou16u2m26"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_1jao3"]
 [ext_resource type="Script" path="res://ShootHandler.gd" id="2_jqhu0"]
+[ext_resource type="Script" path="res://Damageable.gd" id="3_j554h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3a0s1"]
 
@@ -9,6 +10,8 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p6fb8"]
 size = Vector2(256, 256)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qk3w5"]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_1jao3")
@@ -39,3 +42,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.336531, 1.27907, -1.76531)
 [node name="CSGBox3D" type="CSGBox3D" parent="RotationalPivot/Marker3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00202441, -0.00556028, 0.651787)
 size = Vector3(0.189941, 0.125549, 1.40149)
+
+[node name="Damageable" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_j554h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Damageable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_qk3w5")
+
+[connection signal="damaged" from="Damageable" to="." method="_on_damageable_damaged"]

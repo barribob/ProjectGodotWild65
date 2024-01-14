@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbwr7p0af5ue3"]
+[gd_scene load_steps=5 format=3 uid="uid://cbwr7p0af5ue3"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_g687n"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_drd1t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jm4gi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3g1i1"]
+radius = 0.6
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_g687n")
@@ -16,3 +19,13 @@ mesh = SubResource("CapsuleMesh_drd1t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_jm4gi")
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_3g1i1")
+
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_area_entered"]

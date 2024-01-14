@@ -13,3 +13,7 @@ func init(in_player):
 
 func damage(damage_params):
     queue_free()
+
+func _on_damage_area_area_entered(area):
+    if area.has_method("damage"):
+        area.damage({})
