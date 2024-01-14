@@ -2,6 +2,9 @@ extends Node
 
 var freeze_time = 0
 
+func _ready():
+    Console.add_command("slow", func(): set_time_scale(0.07, 0.3))
+
 func set_time_scale(time_scale, time_at_time_scale):
     Engine.time_scale = time_scale
     freeze_time = time_at_time_scale

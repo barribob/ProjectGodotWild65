@@ -22,7 +22,7 @@ func init(in_player):
     
 func force_away(params):
     var distance = (player.global_position - global_position).length()
-    if distance < 5:
+    if distance < 3:
         var dir = (player.global_position - global_position).normalized()
         velocity += dir * -1 * force_away_speed
 
