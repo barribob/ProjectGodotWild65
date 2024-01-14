@@ -20,3 +20,9 @@ static func get_3d_mouse_pos(y_pos: float, node: Node3D, camera: Camera3D):
         return intersection_point
     
     return Vector3.ZERO
+
+static func geq(f1: float, f2: float):
+    return f1 > f2 || is_equal_approx(f1, f2)
+
+static func leq(f1: float, f2: float):
+    return f1 < f2 || is_equal_approx(f1, f2)

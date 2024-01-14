@@ -5,11 +5,17 @@ extends Node3D
 @onready var projectile_output = $"../RotationalPivot/Marker3D"
 @onready var projectile = load("res://projectile.tscn")
 
+var shoot_interval = 0.5
+var shoot_cooldown = 0.0
+
 func _process(delta):
     reticle.global_position = Utils.get_3d_mouse_pos(0.1, self, get_viewport().get_camera_3d())
     pivot.look_at(reticle.global_position)
-    if Input.is_action_just_pressed("shoot"):
+    
+    shoot_cooldown = clampf(shoot_cooldown - delta, 0, shoot_interval)
+    if Input.is_action_pressed("shoot") and Utils.leq(shoot_cooldown, 0):
         shoot()
+        shoot_cooldown = shoot_interval
 
 func shoot():
     var b = projectile.instantiate()
