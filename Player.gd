@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 signal gain_exp(amt)
+signal player_damaged(damage_params)
 
 var speed_while_shooting = 2.0
 var slowdown_time = 0.3
@@ -26,7 +27,7 @@ func _physics_process(delta):
     move_and_slide()
 
 func _on_damageable_damaged(damage_params):
-    print("player damaged")
+    player_damaged.emit(damage_params)
 
 func _on_shoot_handler_fired():
     slowdown_cooldown = slowdown_time

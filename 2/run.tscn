@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=9 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
 [ext_resource type="PackedScene" uid="uid://l15ou16u2m26" path="res://player.tscn" id="2_0nnb1"]
 [ext_resource type="Theme" uid="uid://cfu445y3vjite" path="res://data/theme.tres" id="3_2vge8"]
-[ext_resource type="Script" path="res://2/HUD.gd" id="4_54ge4"]
+[ext_resource type="Script" path="res://HUD.gd" id="4_54ge4"]
 [ext_resource type="PackedScene" uid="uid://psj8ws7tw4fe" path="res://upgrades_panel.tscn" id="5_0mes8"]
+[ext_resource type="Script" path="res://HealthBar.gd" id="5_7qsy8"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mbahu"]
 size = Vector2(50, 25)
@@ -52,16 +53,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ExpBar" type="ProgressBar" parent="HUDLayer/HUD/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUDLayer/HUD/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ExpBar" type="ProgressBar" parent="HUDLayer/HUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 show_percentage = false
+
+[node name="Health" type="HBoxContainer" parent="HUDLayer/HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("5_7qsy8")
 
 [node name="UpgradesLayer" type="CanvasLayer" parent="."]
 layer = 2
 
 [node name="UpgradesPanel" parent="UpgradesLayer" instance=ExtResource("5_0mes8")]
 process_mode = 3
+visible = false
 
+[connection signal="player_damaged" from="Player" to="HUDLayer/HUD/MarginContainer/VBoxContainer/Health" method="_on_player_player_damaged"]
 [connection signal="leveled" from="HUDLayer/HUD" to="UpgradesLayer/UpgradesPanel" method="leveled_up"]
