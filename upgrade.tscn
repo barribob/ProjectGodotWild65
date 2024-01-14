@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://birf8f5x308un"]
+
+[ext_resource type="Script" path="res://UpgradeChoice.gd" id="1_dllha"]
+[ext_resource type="StyleBox" uid="uid://dbf62ywv2qu0f" path="res://data/invisible.tres" id="1_tc4cx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mt5pq"]
+size = Vector2(128, 128)
+
+[node name="Upgrade" type="PanelContainer"]
+script = ExtResource("1_dllha")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_mt5pq")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "epic upgrade description that might become pretty long"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("1_tc4cx")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

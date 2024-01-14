@@ -26,19 +26,23 @@ func _process(delta):
             is_reloading = false
     
     shoot_cooldown = clampf(shoot_cooldown - delta, 0, shoot_interval)
-    if Input.is_action_pressed("shoot") and Utils.leq(shoot_cooldown, 0) and current_ammo > 0:
-        shoot()
-        fired.emit()
-        shoot_cooldown = shoot_interval
-        current_ammo -= 1
-        is_reloading = false
-        reload_cooldown = 0 # cancel any in-progress reloads
-        if current_ammo == 0:
-            reload_cooldown = reload_time
-            is_reloading = true
-    elif not is_reloading:
+
+    if not Input.is_action_pressed("shoot") and not is_reloading:
         reload_cooldown = reload_time
-        is_reloading = true        
+        is_reloading = true
+        
+func _unhandled_input(event):
+    if event is InputEventMouseButton and event.is_action_pressed("shoot"):
+        if Utils.leq(shoot_cooldown, 0) and current_ammo > 0:
+            shoot()
+            fired.emit()
+            shoot_cooldown = shoot_interval
+            current_ammo -= 1
+            is_reloading = false
+            reload_cooldown = 0 # cancel any in-progress reloads
+            if current_ammo == 0:
+                reload_cooldown = reload_time
+                is_reloading = true
 
 func shoot():
     var b = projectile.instantiate()
