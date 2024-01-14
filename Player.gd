@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal gain_exp(amt)
+
 var speed_while_shooting = 2.0
 var slowdown_time = 0.3
 var slowdown_cooldown = 0.0
@@ -30,4 +32,4 @@ func _on_shoot_handler_fired():
     slowdown_cooldown = slowdown_time
 
 func _on_item_detection_picked(params):
-    print("picked up item")
+    gain_exp.emit(1)

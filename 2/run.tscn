@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh8efijj0mc1x"]
+
+[ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
+[ext_resource type="PackedScene" uid="uid://l15ou16u2m26" path="res://player.tscn" id="2_0nnb1"]
+[ext_resource type="Theme" uid="uid://cfu445y3vjite" path="res://data/theme.tres" id="3_2vge8"]
+[ext_resource type="Script" path="res://2/HUD.gd" id="4_54ge4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mbahu"]
+size = Vector2(50, 25)
+
+[sub_resource type="Environment" id="Environment_4ndlc"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_mbahu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 10.941, 6.03703)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ndlc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.62418, 0.781281, 0, -0.781281, 0.62418, 0, 4.29437, 0)
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_dupvs")]
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_0nnb1")]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_2vge8")
+script = ExtResource("4_54ge4")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExpBar" type="ProgressBar" parent="HUD/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+show_percentage = false
