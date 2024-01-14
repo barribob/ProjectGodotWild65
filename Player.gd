@@ -26,8 +26,17 @@ func _physics_process(delta):
 
     move_and_slide()
 
+var is_invincible
+var invincibility_time = 0.5
+
 func _on_damageable_damaged(damage_params):
+    if is_invincible:
+        return
+        
     player_damaged.emit(damage_params)
+    is_invincible = true
+    var tween = create_tween()
+    tween.tween_callback(func(): is_invincible = false).set_delay(invincibility_time)
 
 func _on_shoot_handler_fired():
     slowdown_cooldown = slowdown_time
