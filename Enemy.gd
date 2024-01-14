@@ -1,10 +1,15 @@
 extends CharacterBody3D
 
-func _ready():
-    pass
+var player
+var speed = 1.0
 
-func init(player):
-    pass
+func _physics_process(delta):
+    if player:
+        look_at(player.global_position, Vector3.UP)
+        transform.origin += -transform.basis.z * speed * delta
+
+func init(in_player):
+    player = in_player
 
 func damage(damage_params):
-    print("enemy damaged")
+    queue_free()

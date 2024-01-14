@@ -37,7 +37,6 @@ func _spawn_enemy():
             var enemy_spawn = waves.waves[current_wave_index]
             var enemy_instance = enemy_spawn.enemy.instantiate()
             enemy_instance.init(player)
+            enemy_instance.position = random_position.global_position
             add_child(enemy_instance)
-            enemy_instance.global_position = random_position.global_position
             return
-            

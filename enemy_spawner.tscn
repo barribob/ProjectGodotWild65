@@ -14,19 +14,19 @@ player = NodePath("Player")
 [node name="SpawnPositions" type="Node3D" parent="."]
 
 [node name="SpawnPosition" type="Area3D" parent="SpawnPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.48969)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.43898)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition"]
 shape = SubResource("CylinderShape3D_wr3e1")
 
 [node name="SpawnPosition2" type="Area3D" parent="SpawnPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77247, 0, -1.71434)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77247, 0, -4.66363)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition2"]
 shape = SubResource("CylinderShape3D_wr3e1")
 
 [node name="SpawnPosition3" type="Area3D" parent="SpawnPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68059, 0, -1.72941)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68059, 0, -4.6787)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition3"]
 shape = SubResource("CylinderShape3D_wr3e1")

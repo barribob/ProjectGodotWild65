@@ -1,23 +1,16 @@
-[gd_resource type="Resource" script_class="EnemyWaves" load_steps=6 format=3 uid="uid://cxihbbxfrrs8t"]
+[gd_resource type="Resource" script_class="EnemyWaves" load_steps=5 format=3 uid="uid://cxihbbxfrrs8t"]
 
-[ext_resource type="Script" path="res://EnemyWaves.gd" id="1_ftew0"]
-[ext_resource type="PackedScene" uid="uid://cbwr7p0af5ue3" path="res://enemy.tscn" id="2_rnq12"]
-[ext_resource type="Script" path="res://EnemySpawn.gd" id="3_75uqc"]
+[ext_resource type="Script" path="res://EnemyWaves.gd" id="1_a1g6t"]
+[ext_resource type="PackedScene" uid="uid://cbwr7p0af5ue3" path="res://enemy.tscn" id="2_jjeju"]
+[ext_resource type="Script" path="res://EnemySpawn.gd" id="3_bubs0"]
 
 [sub_resource type="Resource" id="Resource_x8dkp"]
-script = ExtResource("3_75uqc")
-enemy = ExtResource("2_rnq12")
-spawn_amount = 5
-initial_delay = 1.0
-in_between_delay = 0.2
-
-[sub_resource type="Resource" id="Resource_iswdl"]
-script = ExtResource("3_75uqc")
-enemy = ExtResource("2_rnq12")
-spawn_amount = 4
-initial_delay = 1.0
+script = ExtResource("3_bubs0")
+enemy = ExtResource("2_jjeju")
+spawn_amount = 1
+initial_delay = 0.2
 in_between_delay = 0.2
 
 [resource]
-script = ExtResource("1_ftew0")
-waves = Array[ExtResource("3_75uqc")]([SubResource("Resource_x8dkp"), SubResource("Resource_iswdl")])
+script = ExtResource("1_a1g6t")
+waves = Array[ExtResource("3_bubs0")]([SubResource("Resource_x8dkp")])
