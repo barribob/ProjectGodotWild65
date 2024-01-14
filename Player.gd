@@ -28,3 +28,6 @@ func _on_damageable_damaged(damage_params):
 
 func _on_shoot_handler_fired():
     slowdown_cooldown = slowdown_time
+
+func _on_item_detection_picked(params):
+    print("picked up item")

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var item_scene: PackedScene = load("res://item.tscn")
+
 var player
 var speed = 1.0
 
@@ -12,6 +14,9 @@ func init(in_player):
     player = in_player
 
 func damage(damage_params):
+    var item = item_scene.instantiate()
+    item.position = position
+    get_parent().add_child(item)
     queue_free()
 
 func _on_damage_area_area_entered(area):
