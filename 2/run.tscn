@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=11 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
 [ext_resource type="PackedScene" uid="uid://l15ou16u2m26" path="res://player.tscn" id="2_0nnb1"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://HUD.gd" id="4_54ge4"]
 [ext_resource type="PackedScene" uid="uid://psj8ws7tw4fe" path="res://upgrades_panel.tscn" id="5_0mes8"]
 [ext_resource type="Script" path="res://HealthBar.gd" id="5_7qsy8"]
+[ext_resource type="Script" path="res://GameOver.gd" id="7_bjspu"]
+[ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="7_x3db4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mbahu"]
 size = Vector2(50, 25)
@@ -75,5 +77,70 @@ layer = 2
 process_mode = 3
 visible = false
 
+[node name="EndGameLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOver" type="Control" parent="EndGameLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_bjspu")
+main_menu_scene = "res://App/Scenes/Menus/MainMenu/MainMenu.tscn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndGameLayer/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -264.0
+offset_right = 65.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="EndGameLayer/GameOver/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="Title" type="Label" parent="EndGameLayer/GameOver/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="EndGameLayer/GameOver/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("7_x3db4")
+
+[node name="RestartButton" type="Button" parent="EndGameLayer/GameOver/VBoxContainer/MenuButtons"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="EndGameLayer/GameOver/VBoxContainer/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Main Menu"
+
+[node name="ExitButton" type="Button" parent="EndGameLayer/GameOver/VBoxContainer/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Exit Game"
+
 [connection signal="player_damaged" from="Player" to="HUDLayer/HUD/MarginContainer/VBoxContainer/Health" method="_on_player_player_damaged"]
 [connection signal="leveled" from="HUDLayer/HUD" to="UpgradesLayer/UpgradesPanel" method="leveled_up"]
+[connection signal="died" from="HUDLayer/HUD/MarginContainer/VBoxContainer/Health" to="EndGameLayer/GameOver" method="_on_health_died"]
+[connection signal="pressed" from="EndGameLayer/GameOver/VBoxContainer/MenuButtons/RestartButton" to="EndGameLayer/GameOver" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="EndGameLayer/GameOver/VBoxContainer/MenuButtons/MainMenuButton" to="EndGameLayer/GameOver" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="EndGameLayer/GameOver/VBoxContainer/MenuButtons/ExitButton" to="EndGameLayer/GameOver" method="_on_exit_button_pressed"]
