@@ -1,34 +1,64 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpg42bk8y2tmo"]
 
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="1_yu0yx"]
-[ext_resource type="Resource" uid="uid://cxihbbxfrrs8t" path="res://waves.tres" id="2_q5ifl"]
+[ext_resource type="Resource" uid="uid://cxihbbxfrrs8t" path="res://data/waves.tres" id="2_pv120"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wr3e1"]
 
 [node name="EnemySpawner" type="Node3D" node_paths=PackedStringArray("spawn_positions", "player")]
 script = ExtResource("1_yu0yx")
-waves = ExtResource("2_q5ifl")
+waves = ExtResource("2_pv120")
 spawn_positions = NodePath("SpawnPositions")
 player = NodePath("Player")
 
 [node name="SpawnPositions" type="Node3D" parent="."]
 
 [node name="SpawnPosition" type="Area3D" parent="SpawnPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.43898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition"]
 shape = SubResource("CylinderShape3D_wr3e1")
 
 [node name="SpawnPosition2" type="Area3D" parent="SpawnPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77247, 0, -4.66363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -15)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition2"]
 shape = SubResource("CylinderShape3D_wr3e1")
 
 [node name="SpawnPosition3" type="Area3D" parent="SpawnPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68059, 0, -4.6787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition3"]
+shape = SubResource("CylinderShape3D_wr3e1")
+
+[node name="SpawnPosition4" type="Area3D" parent="SpawnPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition4"]
+shape = SubResource("CylinderShape3D_wr3e1")
+
+[node name="SpawnPosition5" type="Area3D" parent="SpawnPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition5"]
+shape = SubResource("CylinderShape3D_wr3e1")
+
+[node name="SpawnPosition6" type="Area3D" parent="SpawnPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition6"]
+shape = SubResource("CylinderShape3D_wr3e1")
+
+[node name="SpawnPosition7" type="Area3D" parent="SpawnPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition7"]
+shape = SubResource("CylinderShape3D_wr3e1")
+
+[node name="SpawnPosition8" type="Area3D" parent="SpawnPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPosition8"]
 shape = SubResource("CylinderShape3D_wr3e1")
 
 [node name="Player" type="Marker3D" parent="."]
