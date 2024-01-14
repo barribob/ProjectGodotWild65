@@ -1,8 +1,10 @@
-extends Node3D
+extends CharacterBody3D
 
 func _ready():
-    await get_tree().create_timer(0.5).timeout
-    queue_free()
+    pass
 
 func init(player):
     pass
+
+func damage(damage_params):
+    print("enemy damaged")

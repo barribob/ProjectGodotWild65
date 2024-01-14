@@ -4,17 +4,15 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_drd1t"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qgews"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jm4gi"]
 
-[node name="Enemy" type="Node3D"]
+[node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_g687n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_drd1t")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("CapsuleShape3D_qgews")
+shape = SubResource("CapsuleShape3D_jm4gi")
