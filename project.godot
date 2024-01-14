@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 SceneLoader="*res://App/Scripts/SceneLoader.gd"
 Console="*res://addons/console/Console.gd"
+TimeManager="*res://TimeManager.gd"
 
 [display]
 
