@@ -1,6 +1,8 @@
 extends Node3D
 
 signal fired
+signal reload_start(cooldown)
+signal reload_cancel
 
 @onready var reticle = $Reticle
 @onready var pivot = $"../RotationalPivot"
@@ -15,6 +17,8 @@ var reload_time = 1.0
 var reload_cooldown = 0.0
 var is_reloading = false
 var shoot_button_down = false
+var time_idle_to_auto_reload = 0.3
+var idle_time = 0.0
 
 func _process(delta):
     reticle.global_position = Utils.get_3d_mouse_pos(0.1, self, get_viewport().get_camera_3d())
@@ -28,19 +32,27 @@ func _process(delta):
     
     shoot_cooldown = clampf(shoot_cooldown - delta, 0, shoot_interval)
 
+    if !shoot_button_down:
+        idle_time += delta
+    else:
+        idle_time = 0        
+
     if shoot_button_down and Utils.leq(shoot_cooldown, 0) and current_ammo > 0:
         shoot()
         fired.emit()
         shoot_cooldown = shoot_interval
         current_ammo -= 1
         is_reloading = false
+        reload_cancel.emit()
         reload_cooldown = 0 # cancel any in-progress reloads
         if current_ammo == 0:
             reload_cooldown = reload_time
             is_reloading = true
-    elif not is_reloading:
+            reload_start.emit(reload_time)
+    elif not is_reloading and current_ammo < clip_size and Utils.geq(idle_time, time_idle_to_auto_reload):
         reload_cooldown = reload_time
         is_reloading = true
+        reload_start.emit(reload_time)
         
 func _unhandled_input(event):
     if event is InputEventMouseButton and event.is_action("shoot"):
