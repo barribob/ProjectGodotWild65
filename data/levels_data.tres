@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="LevelsData" load_steps=2 format=3 uid="uid://dtp7faene5b0u"]
+
+[ext_resource type="Script" path="res://LevelsData.gd" id="1_y86ds"]
+
+[resource]
+script = ExtResource("1_y86ds")
+levels = Array[int]([10, 15, 22, 30, 40, 50, 75])
