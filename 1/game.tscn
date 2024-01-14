@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=5 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_or4yx"]
+[ext_resource type="PackedScene" uid="uid://l15ou16u2m26" path="res://data/player.tscn" id="2_kb2ej"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mbahu"]
-size = Vector2(20, 10)
+size = Vector2(40, 20)
 
 [sub_resource type="Environment" id="Environment_4ndlc"]
 
@@ -13,7 +14,7 @@ size = Vector2(20, 10)
 mesh = SubResource("PlaneMesh_mbahu")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.376418, 0.92645, 0, -0.92645, 0.376418, 0, 5.32587, 3.72804)
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 10.941, 6.03703)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4ndlc")
@@ -22,3 +23,5 @@ environment = SubResource("Environment_4ndlc")
 transform = Transform3D(1, 0, 0, 0, 0.62418, 0.781281, 0, -0.781281, 0.62418, 0, 4.29437, 0)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_or4yx")]
+
+[node name="Player" parent="." instance=ExtResource("2_kb2ej")]
