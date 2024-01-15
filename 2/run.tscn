@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=12 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
 [ext_resource type="PackedScene" uid="uid://l15ou16u2m26" path="res://player.tscn" id="2_0nnb1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://HealthBar.gd" id="5_7qsy8"]
 [ext_resource type="Script" path="res://GameOver.gd" id="7_bjspu"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="7_x3db4"]
+[ext_resource type="Script" path="res://2/CameraFollow.gd" id="9_lsdtg"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mbahu"]
 size = Vector2(50, 25)
@@ -18,9 +19,6 @@ size = Vector2(50, 25)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_mbahu")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 10.941, 6.03703)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4ndlc")
@@ -137,6 +135,15 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 text = "Exit Game"
+
+[node name="CameraFollow" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("9_lsdtg")
+target = NodePath("../Player")
+min_offset = Vector3(-100, 0, -100)
+max_offset = Vector3(100, 0, 100)
+
+[node name="Camera3D" type="Camera3D" parent="CameraFollow"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 10.941, 6.03703)
 
 [connection signal="player_damaged" from="Player" to="HUDLayer/HUD/MarginContainer/VBoxContainer/Health" method="_on_player_player_damaged"]
 [connection signal="leveled" from="HUDLayer/HUD" to="UpgradesLayer/UpgradesPanel" method="leveled_up"]
