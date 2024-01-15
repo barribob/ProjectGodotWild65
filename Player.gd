@@ -3,26 +3,38 @@ extends CharacterBody3D
 signal gain_exp(amt)
 signal player_damaged(damage_params)
 
+@onready var animation_tree: AnimationTree = $RotationFix/PlayerRobot/AnimationTree
+@onready var model = $RotationFix/PlayerRobot
+
 var speed_while_shooting = 2.0
 var slowdown_time = 0.3
 var slowdown_cooldown = 0.0
 var regular_speed = 5.0
+var transition_speed = 0.5
+var move_lag : float = 16.0
+
+var current_input: Vector2
+var current_velocity: Vector2
 
 func _process(delta):
     slowdown_cooldown = clampf(slowdown_cooldown - delta, 0, slowdown_time)
+    var xz_velocity = Vector3(velocity.x, 0, velocity.z)
+    
+    animation_tree.set("parameters/Locomotion/blend_position", Vector2(0, 1) * xz_velocity.length())
+    
+    if xz_velocity.length_squared() > 0.01:
+        model.look_at(model.global_position - xz_velocity)
 
 func _physics_process(delta):
     var slowed_down = slowdown_cooldown > 0
     var speed = speed_while_shooting if slowed_down else regular_speed
     
-    var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-    var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+    current_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+    var direction = (transform.basis * Vector3(current_input.x, 0, current_input.y)).normalized()
     if direction:
-        velocity.x = direction.x * speed
-        velocity.z = direction.z * speed
+        velocity = lerp(velocity, direction * speed, delta * move_lag)
     else:
-        velocity.x = move_toward(velocity.x, 0, speed)
-        velocity.z = move_toward(velocity.z, 0, speed)
+        velocity = lerp(velocity, Vector3.ZERO, delta * move_lag)
 
     move_and_slide()
 
