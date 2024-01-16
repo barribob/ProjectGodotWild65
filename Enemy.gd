@@ -3,9 +3,13 @@ extends CharacterBody3D
 @onready var item_scene: PackedScene = load("res://item.tscn")
 
 var player
-var speed = 2.0
+var speed = 3.0
 var move_lag : float = 16.0
 var force_away_speed = 20.0
+@onready var animation_player = %AnimationPlayer
+
+func _ready():
+    animation_player.play("RunFoward")
 
 func _physics_process(delta):
     if player:

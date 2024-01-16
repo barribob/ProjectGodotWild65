@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://GameOver.gd" id="7_bjspu"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="7_x3db4"]
 [ext_resource type="Script" path="res://2/CameraFollow.gd" id="9_lsdtg"]
-[ext_resource type="PackedScene" path="res://environment/TheOVERWorld5.glb" id="10_0014q"]
+[ext_resource type="PackedScene" uid="uid://4bnl5l4ndplr" path="res://environment/TheOVERWorld5.glb" id="10_0014q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sy8ao"]
 sky_top_color = Color(0.0784314, 0.152941, 0.152941, 1)
