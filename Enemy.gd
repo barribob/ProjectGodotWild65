@@ -29,6 +29,7 @@ func force_away(params):
 func damage(damage_params):
     var item = item_scene.instantiate()
     item.position = position
+    item.start(player)
     get_parent().add_child(item)
     player.player_damaged.disconnect(force_away)
     queue_free()
