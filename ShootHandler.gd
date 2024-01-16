@@ -8,6 +8,7 @@ signal reload_cancel
 @onready var pivot = $"../RotationalPivot"
 @onready var projectile_output = $"../RotationalPivot/Marker3D"
 @onready var projectile = load("res://projectile.tscn")
+@onready var animation_tree = %AnimationTree
 
 var shoot_interval = 0.3
 var shoot_cooldown = 0.0
@@ -19,6 +20,12 @@ var is_reloading = false
 var shoot_button_down = false
 var time_idle_to_auto_reload = 0.3
 var idle_time = 0.0
+
+var upper_body_animation: AnimationNodeStateMachinePlayback
+
+func _ready():
+    upper_body_animation = animation_tree.get("parameters/UpperBodyStateMachine/playback")
+    animation_tree.set("parameters/UpperBodyBlend/blend_amount", 0.0)            
 
 func _process(delta):
     reticle.global_position = Utils.get_3d_mouse_pos(0.1, self, get_viewport().get_camera_3d())
@@ -38,6 +45,8 @@ func _process(delta):
         idle_time = 0        
 
     if shoot_button_down and Utils.leq(shoot_cooldown, 0) and current_ammo > 0:
+        animation_tree.set("parameters/UpperBodyBlend/blend_amount", 0.95)        
+        upper_body_animation.start("shoot")
         shoot()
         fired.emit()
         shoot_cooldown = shoot_interval
@@ -50,6 +59,7 @@ func _process(delta):
             is_reloading = true
             reload_start.emit(reload_time)
     elif not is_reloading and current_ammo < clip_size and Utils.geq(idle_time, time_idle_to_auto_reload):
+        upper_body_animation.travel("idle")
         reload_cooldown = reload_time
         is_reloading = true
         reload_start.emit(reload_time)
@@ -57,6 +67,8 @@ func _process(delta):
 func _unhandled_input(event):
     if event is InputEventMouseButton and event.is_action("shoot"):
         shoot_button_down = event.is_pressed()
+        if !shoot_button_down:
+            animation_tree.set("parameters/UpperBodyBlend/blend_amount", 0.0)
 
 func shoot():
     var b = projectile.instantiate()

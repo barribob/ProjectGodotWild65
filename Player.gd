@@ -3,8 +3,9 @@ extends CharacterBody3D
 signal gain_exp(amt)
 signal player_damaged(damage_params)
 
-@onready var animation_tree: AnimationTree = $RotationFix/PlayerRobot/AnimationTree
-@onready var model = $RotationFix/PlayerRobot
+@onready var animation_tree: AnimationTree = %AnimationTree
+@onready var model = $Model
+@onready var reticle = $ShootHandler/Reticle
 
 var speed_while_shooting = 2.0
 var slowdown_time = 0.3
@@ -18,12 +19,14 @@ var current_velocity: Vector2
 
 func _process(delta):
     slowdown_cooldown = clampf(slowdown_cooldown - delta, 0, slowdown_time)
-    var xz_velocity = Vector3(velocity.x, 0, velocity.z)
     
-    animation_tree.set("parameters/Locomotion/blend_position", Vector2(0, 1) * xz_velocity.length())
+    var xz_velocity = Vector3(velocity.x, 0, velocity.z)
+    var guess = xz_velocity * model.basis
+    
+    animation_tree.set("parameters/Locomotion/Locomotion/blend_position", Vector2(guess.x, -guess.z))
     
     if xz_velocity.length_squared() > 0.01:
-        model.look_at(model.global_position - xz_velocity)
+        model.look_at(reticle.global_position)
 
 func _physics_process(delta):
     var slowed_down = slowdown_cooldown > 0
