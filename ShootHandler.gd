@@ -10,7 +10,9 @@ signal reload_cancel
 @onready var projectile = load("res://projectile.tscn")
 @onready var animation_tree = %AnimationTree
 
-var shoot_interval = 0.3
+const base_shoot_interval = 0.3
+
+var shoot_interval = base_shoot_interval
 var shoot_cooldown = 0.0
 var clip_size = 5
 var current_ammo: int = 5
