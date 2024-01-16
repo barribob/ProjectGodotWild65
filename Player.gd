@@ -27,8 +27,8 @@ func _process(delta):
     
     if (reticle.global_position - model.global_position).length() > 0.5:
         var target_position = reticle.global_position
-        var new_transform = model.transform.looking_at(target_position, Vector3.UP)
-        model.transform = model.transform.interpolate_with(new_transform, turn_lag * delta)
+        var new_transform = model.global_transform.looking_at(target_position, Vector3.UP)
+        model.global_transform = model.global_transform.interpolate_with(new_transform, turn_lag * delta)
 
 func _physics_process(delta):
     var slowed_down = slowdown_cooldown > 0
