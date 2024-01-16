@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=15 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
 [ext_resource type="PackedScene" uid="uid://l15ou16u2m26" path="res://player.tscn" id="2_0nnb1"]
@@ -11,21 +11,48 @@
 [ext_resource type="Script" path="res://2/CameraFollow.gd" id="9_lsdtg"]
 [ext_resource type="PackedScene" path="res://environment/TheOVERWorld5.glb" id="10_0014q"]
 
-[sub_resource type="Environment" id="Environment_4ndlc"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sy8ao"]
+sky_top_color = Color(0.0784314, 0.152941, 0.152941, 1)
+sky_horizon_color = Color(0.109804, 0.247059, 0.247059, 1)
+sky_curve = 0.13
+ground_bottom_color = Color(0.109804, 0.247059, 0.247059, 1)
+ground_horizon_color = Color(0.109804, 0.247059, 0.247059, 1)
+
+[sub_resource type="Sky" id="Sky_a5u31"]
+sky_material = SubResource("ProceduralSkyMaterial_sy8ao")
+
+[sub_resource type="Environment" id="Environment_ach2a"]
+background_mode = 2
+sky = SubResource("Sky_a5u31")
+ambient_light_color = Color(0.411765, 0.411765, 0.411765, 1)
+ambient_light_sky_contribution = 0.3
+ambient_light_energy = 0.39
+tonemap_mode = 2
+tonemap_white = 16.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kvpjc"]
+size = Vector2(20, 20)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_4ndlc")
+environment = SubResource("Environment_ach2a")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.62418, 0.781281, 0, -0.781281, 0.62418, 0, 4.29437, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.687949, -0.567021, 0.453004, 0.270452, 0.779513, 0.564991, -0.673485, -0.266169, 0.689618, 0, 4.29437, 0)
+light_energy = 0.37
+shadow_enabled = true
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_dupvs")]
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_0nnb1")]
 unique_name_in_owner = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00274, 0)
+light_size = 0.006
+omni_range = 20.0
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
@@ -144,6 +171,10 @@ transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0,
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -42.9373, 2.17041, -81.5123)
 
 [node name="TheOVERWorld5" parent="ScaleFix" instance=ExtResource("10_0014q")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PlaneMesh_kvpjc")
 
 [connection signal="player_damaged" from="Player" to="HUDLayer/HUD/MarginContainer/VBoxContainer/Health" method="_on_player_player_damaged"]
 [connection signal="leveled" from="HUDLayer/HUD" to="UpgradesLayer/UpgradesPanel" method="leveled_up"]

@@ -13,6 +13,7 @@ var slowdown_cooldown = 0.0
 var regular_speed = 5.0
 var transition_speed = 0.5
 var move_lag : float = 16.0
+var turn_lag : float = 16.0
 
 var current_input: Vector2
 var current_velocity: Vector2
@@ -21,12 +22,13 @@ func _process(delta):
     slowdown_cooldown = clampf(slowdown_cooldown - delta, 0, slowdown_time)
     
     var xz_velocity = Vector3(velocity.x, 0, velocity.z)
-    var guess = xz_velocity * model.basis
+    var walk_dir = xz_velocity * model.basis
+    animation_tree.set("parameters/Locomotion/Locomotion/blend_position", Vector2(walk_dir.x, -walk_dir.z))
     
-    animation_tree.set("parameters/Locomotion/Locomotion/blend_position", Vector2(guess.x, -guess.z))
-    
-    if xz_velocity.length_squared() > 0.01:
-        model.look_at(reticle.global_position)
+    if (reticle.global_position - model.global_position).length() > 0.5:
+        var target_position = reticle.global_position
+        var new_transform = model.transform.looking_at(target_position, Vector3.UP)
+        model.transform = model.transform.interpolate_with(new_transform, turn_lag * delta)
 
 func _physics_process(delta):
     var slowed_down = slowdown_cooldown > 0
