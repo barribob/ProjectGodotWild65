@@ -6,12 +6,14 @@ var player
 var speed = 3.0
 var move_lag : float = 16.0
 var force_away_speed = 20.0
+var health: float
 var enemy_type: EnemyType
 
 func _ready():
     var model = enemy_type.model.instantiate()
     add_child(model)
-    model.animation_player.play("RunFoward")    
+    model.animation_player.play("RunFoward")
+    health = enemy_type.health
 
 func _physics_process(delta):
     if player:
@@ -19,14 +21,14 @@ func _physics_process(delta):
         velocity = lerp(velocity, -transform.basis.z * speed, delta * move_lag)
     else:
         velocity = lerp(velocity, Vector2.ZERO, delta * move_lag)
-        
+
     move_and_slide()
 
 func init(in_player, type):
     player = in_player
     player.player_damaged.connect(force_away)
     enemy_type = type
-    
+
 func force_away(params):
     var distance = (player.global_position - global_position).length()
     if distance < 3:

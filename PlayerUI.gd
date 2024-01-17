@@ -11,7 +11,7 @@ func _ready():
 func _on_shoot_handler_reload_start(cooldown):
     if current_tween:
         current_tween.kill()
-        
+
     current_tween = create_tween()
     progress_bar.show()
     progress_bar.value = 0
@@ -19,4 +19,4 @@ func _on_shoot_handler_reload_start(cooldown):
     current_tween.tween_callback(progress_bar.hide)
 
 func _on_shoot_handler_reload_cancel():
-    progress_bar.hide()    
+    progress_bar.hide()

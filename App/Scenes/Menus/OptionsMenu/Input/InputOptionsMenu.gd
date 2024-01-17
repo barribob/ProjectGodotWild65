@@ -99,7 +99,7 @@ func _build_ui_tree():
 
 func _assign_input_event(input_event : InputEvent, action_name : String):
     assigned_input_events[InputEventHelper.get_text(input_event)] = action_name
-        
+
 func _assign_input_event_to_action(input_event : InputEvent, action_name : String) -> void:
     _assign_input_event(input_event, action_name)
     InputMap.action_add_event(action_name, input_event)
@@ -127,7 +127,7 @@ func _build_assigned_input_events():
 
 func _get_action_for_input_event(input_event : InputEvent) -> String:
     if InputEventHelper.get_text(input_event) in assigned_input_events:
-        return assigned_input_events[InputEventHelper.get_text(input_event)] 
+        return assigned_input_events[InputEventHelper.get_text(input_event)]
     return ""
 
 func _horizontally_align_popup_labels():

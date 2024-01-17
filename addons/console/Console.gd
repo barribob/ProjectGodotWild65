@@ -54,7 +54,7 @@ func _ready() -> void:
 
 func _input(event : InputEvent) -> void:
     if (!OS.is_debug_build()):
-        get_tree().paused = false        
+        get_tree().paused = false
         return
     if (event is InputEventKey):
         if (event.get_physical_keycode_with_modifiers() == KEY_QUOTELEFT): # ~ key.
@@ -122,13 +122,13 @@ func autocomplete() -> void:
                 return
     else:
         suggesting = true
-        
+
         var sorted_commands := []
         for command in console_commands:
             sorted_commands.append(str(command))
         sorted_commands.sort()
         sorted_commands.reverse()
-        
+
         var prev_index := 0
         for command in sorted_commands:
             if command.contains(line_edit.text):

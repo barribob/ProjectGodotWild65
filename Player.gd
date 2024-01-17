@@ -24,11 +24,11 @@ var current_velocity: Vector2
 
 func _process(delta):
     slowdown_cooldown = clampf(slowdown_cooldown - delta, 0, slowdown_time)
-    
+
     var xz_velocity = Vector3(velocity.x, 0, velocity.z)
     var walk_dir = xz_velocity * model.basis
     animation_tree.set("parameters/Locomotion/Locomotion/blend_position", Vector2(walk_dir.x, -walk_dir.z))
-    
+
     if (reticle.global_position - model.global_position).length() > 0.5:
         var target_position = reticle.global_position
         var new_transform = model.global_transform.looking_at(target_position, Vector3.UP)
@@ -37,7 +37,7 @@ func _process(delta):
 func _physics_process(delta):
     var slowed_down = slowdown_cooldown > 0
     var speed = slowdown_while_shooting * move_speed if slowed_down else move_speed
-    
+
     current_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     var direction = (transform.basis * Vector3(current_input.x, 0, current_input.y)).normalized()
     if direction:
@@ -53,7 +53,7 @@ var invincibility_time = 0.5
 func _on_damageable_damaged(damage_params):
     if is_invincible:
         return
-        
+
     player_damaged.emit(damage_params)
     is_invincible = true
     var tween = create_tween()

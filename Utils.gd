@@ -7,7 +7,7 @@ static func get_3d_mouse_pos(y_pos: float, node: Node3D, camera: Camera3D):
     var mouse_pos = node.get_viewport().get_mouse_position()
     var ray_origin = camera.project_ray_origin(mouse_pos)
     var ray_direction = camera.project_ray_normal(mouse_pos)
-    
+
     var intersection_point = Vector3()
 
     # Calculate the intersection of the ray with the plane
@@ -18,7 +18,7 @@ static func get_3d_mouse_pos(y_pos: float, node: Node3D, camera: Camera3D):
     if t >= 0:
         intersection_point = ray_origin + ray_direction * t
         return intersection_point
-    
+
     return Vector3.ZERO
 
 static func geq(f1: float, f2: float):
