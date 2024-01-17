@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwmlalmlxmoks"]
+
+[ext_resource type="Script" path="res://DamageIndicator.gd" id="1_jfdsp"]
+
+[node name="Label3D" type="Label3D"]
+pixel_size = 0.01
+billboard = 1
+text = "120"
+font_size = 55
+script = ExtResource("1_jfdsp")

@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var item_scene: PackedScene = load("res://item.tscn")
+@onready var damage_indicator_scene: PackedScene = load("res://damage_indicator.tscn")
 
 var player
 var speed = 3.0
@@ -37,6 +38,10 @@ func force_away(params):
 
 func damage(damage_params):
     health -= damage_params.damage
+    var damage_indicator = damage_indicator_scene.instantiate()
+    damage_indicator.text = Utils.format_whole(damage_params.damage)
+    damage_indicator.position = global_position + Vector3.UP * 2
+    get_parent().add_child(damage_indicator)
     if Utils.leq(health, 0):
         die()
 

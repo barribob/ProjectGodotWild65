@@ -26,3 +26,6 @@ static func geq(f1: float, f2: float):
 
 static func leq(f1: float, f2: float):
     return f1 < f2 || is_equal_approx(f1, f2)
+
+static func format_whole(number):
+    return "%.0f" % number
