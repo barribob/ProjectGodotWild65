@@ -36,6 +36,11 @@ func force_away(params):
         velocity += dir * -1 * force_away_speed
 
 func damage(damage_params):
+    health -= damage_params.damage
+    if Utils.leq(health, 0):
+        die()
+
+func die():
     var item = item_scene.instantiate()
     item.position = position
     item.start(player)

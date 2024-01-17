@@ -13,5 +13,5 @@ func _physics_process(delta):
 
 func _on_area_3d_body_entered(body):
     if body.has_method("damage"):
-        body.damage({})
+        body.damage({damage = 1})
     queue_free()
