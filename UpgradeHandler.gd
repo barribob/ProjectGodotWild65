@@ -21,6 +21,7 @@ func recalculate_upgrade_type(upgrade_type):
     var clip_size_upgrade: int = 0
     var pick_up_range_upgrade = 0.0
     var move_speed_upgrade = 0.0
+    var damage_upgrade = 0.0
 
     for upgrade in upgrades_by_type[upgrade_type]:
         fire_rate_upgrade += upgrade.fire_rate
@@ -28,9 +29,11 @@ func recalculate_upgrade_type(upgrade_type):
         clip_size_upgrade += upgrade.clip_size
         pick_up_range_upgrade += upgrade.pick_up_range
         move_speed_upgrade += upgrade.move_speed
+        damage_upgrade += upgrade.damage
 
     shoot_handler.shoot_interval = shoot_handler.base_shoot_interval / (1 + fire_rate_upgrade)
     shoot_handler.reload_time = shoot_handler.base_reload_time / (1 + reload_speed_upgrade)
     shoot_handler.clip_size = shoot_handler.base_clip_size + clip_size_upgrade
     player.pick_up_range = player.base_pick_up_range * (1 + pick_up_range_upgrade)
     player.move_speed = player.base_speed * (1 + move_speed_upgrade)
+    shoot_handler.damage = shoot_handler.base_damage * (1 + damage_upgrade)

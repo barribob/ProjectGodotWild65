@@ -13,6 +13,7 @@ signal reload_cancel
 const base_shoot_interval = 0.3
 const base_clip_size = 5
 const base_reload_time = 1.5
+const base_damage = 1
 
 var shoot_interval = base_shoot_interval
 var shoot_cooldown = 0.0
@@ -24,6 +25,7 @@ var is_reloading = false
 var shoot_button_down = false
 var time_idle_to_auto_reload = 0.3
 var idle_time = 0.0
+var damage = base_damage
 
 var upper_body_animation: AnimationNodeStateMachinePlayback
 
@@ -77,8 +79,7 @@ func _unhandled_input(event):
 func shoot():
     var b = projectile.instantiate()
     owner.get_parent().add_child(b)
-    var params = ProjectileParams.new()
-    params.speed = 10
+    var params = { speed = 10, damage = damage }
     b.start(params)
     b.transform = projectile_output.global_transform
     b.velocity = -b.transform.basis.z * b.muzzle_velocity
