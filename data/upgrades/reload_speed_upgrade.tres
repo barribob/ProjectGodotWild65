@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://e7xpjes5e1pe"]
+
+[ext_resource type="Script" path="res://Upgrade.gd" id="1_rbfyi"]
+
+[resource]
+script = ExtResource("1_rbfyi")
+fire_rate = 0.0
+reload_speed = 1.0
+clip_size = 0
+max_health = 0
+damage = 0.0
+pick_up_range = 0.0
+move_speed = 0

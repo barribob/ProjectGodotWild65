@@ -9,5 +9,3 @@ class_name Upgrade
 @export var damage: float
 @export var pick_up_range: float
 @export var move_speed: int
-@export var upgrade_type: Enums.UpgradeType
-@export var level: int

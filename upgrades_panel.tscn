@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://psj8ws7tw4fe"]
+[gd_scene load_steps=3 format=3 uid="uid://psj8ws7tw4fe"]
 
 [ext_resource type="Theme" uid="uid://cfu445y3vjite" path="res://data/theme.tres" id="1_iyl54"]
 [ext_resource type="Script" path="res://UpgradePanel.gd" id="2_32h8s"]
-[ext_resource type="PackedScene" uid="uid://birf8f5x308un" path="res://upgrade.tscn" id="3_brjrr"]
 
 [node name="UpgradesPanel" type="Control"]
 layout_mode = 3
@@ -33,15 +32,11 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+[node name="UpgradesContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/UpgradesContainer"]
 layout_mode = 2
 text = "Upgrades"
 horizontal_alignment = 1
-
-[node name="Upgrade" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_brjrr")]
-layout_mode = 2
-
-[connection signal="chosen" from="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Upgrade" to="." method="upgrade_chosen"]

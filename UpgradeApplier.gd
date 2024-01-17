@@ -3,19 +3,10 @@ extends Node
 @onready var shoot_handler = %ShootHandler
 @onready var player = $".."
 
-var upgrades_by_type = {}
-
 func _ready():
-    Console.add_command("upgrade", func(upgrade_name): add_upgrade(load("res://data/%s.tres" % upgrade_name)), 1)
+    EventBus.upgrade_added.connect(recalculate_upgrade_type)
 
-func add_upgrade(upgrade: Upgrade):
-    if not upgrades_by_type.has(upgrade.upgrade_type):
-        upgrades_by_type[upgrade.upgrade_type] = []
-
-    upgrades_by_type[upgrade.upgrade_type].append(upgrade)
-    recalculate_upgrade_type(upgrade.upgrade_type)
-
-func recalculate_upgrade_type(upgrade_type):
+func recalculate_upgrade_type(upgrade_type, upgrades_by_type):
     var fire_rate_upgrade = 0.0
     var reload_speed_upgrade = 0.0
     var clip_size_upgrade: int = 0

@@ -1,6 +1,7 @@
 extends Node3D
 
 var speed = 0
+
 var damage
 var velocity = Vector3.ZERO
 var muzzle_velocity = 25
