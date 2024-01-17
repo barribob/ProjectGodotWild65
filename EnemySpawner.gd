@@ -7,6 +7,8 @@ class_name EnemySpawner
 @export var spawn_positions: Node3D
 @export var player: Node3D
 
+@onready var enemy_scene = load("res://enemy.tscn")
+
 var current_wave_index
 
 func _ready():
@@ -35,8 +37,8 @@ func _spawn_enemy():
         available_positions.remove_at(available_positions.find(random_position))
         if random_position.get_overlapping_areas().size() == 0:
             var enemy_spawn = waves.waves[current_wave_index]
-            var enemy_instance = enemy_spawn.enemy.instantiate()
-            enemy_instance.init(player)
+            var enemy_instance = enemy_scene.instantiate()
+            enemy_instance.init(player, enemy_spawn.enemy_type)
             enemy_instance.position = random_position.global_position
             add_child(enemy_instance)
             return

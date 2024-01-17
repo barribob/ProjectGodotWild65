@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://dwyak2p8fd80h"]
+
+[ext_resource type="Script" path="res://EnemyType.gd" id="1_nqpwj"]
+[ext_resource type="PackedScene" uid="uid://c3entm4a0wgi2" path="res://enemy_model_1.tscn" id="1_w0gwq"]
+
+[resource]
+script = ExtResource("1_nqpwj")
+model = ExtResource("1_w0gwq")
+health = 2.0
