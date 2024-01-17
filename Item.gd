@@ -9,7 +9,7 @@ func start(in_player):
     player = in_player
     
 func _physics_process(delta):
-    if player.global_position.distance_squared_to(global_position) < 10:
+    if player.global_position.distance_squared_to(global_position) < pow(player.pick_up_range, 2):
         look_at(player.global_position, Vector3.UP)
         velocity = lerp(velocity, -transform.basis.z * speed, delta * move_lag)
         global_position += velocity

@@ -7,10 +7,14 @@ signal player_damaged(damage_params)
 @onready var model = $Model
 @onready var reticle = $ShootHandler/Reticle
 
-var speed_while_shooting = 2.0
+const base_pick_up_range = 2.5
+const base_speed = 5.0
+
+var pick_up_range = base_pick_up_range
+var slowdown_while_shooting = 0.4
 var slowdown_time = 0.3
 var slowdown_cooldown = 0.0
-var regular_speed = 5.0
+var move_speed = base_speed
 var transition_speed = 0.5
 var move_lag : float = 16.0
 var turn_lag : float = 16.0
@@ -32,7 +36,7 @@ func _process(delta):
 
 func _physics_process(delta):
     var slowed_down = slowdown_cooldown > 0
-    var speed = speed_while_shooting if slowed_down else regular_speed
+    var speed = slowdown_while_shooting * move_speed if slowed_down else move_speed
     
     current_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     var direction = (transform.basis * Vector3(current_input.x, 0, current_input.y)).normalized()

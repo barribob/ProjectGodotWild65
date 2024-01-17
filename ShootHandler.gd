@@ -11,12 +11,14 @@ signal reload_cancel
 @onready var animation_tree = %AnimationTree
 
 const base_shoot_interval = 0.3
+const base_clip_size = 5
+const base_reload_time = 1.5
 
 var shoot_interval = base_shoot_interval
 var shoot_cooldown = 0.0
-var clip_size = 5
+var clip_size = base_clip_size
 var current_ammo: int = 5
-var reload_time = 1.0
+var reload_time = base_reload_time
 var reload_cooldown = 0.0
 var is_reloading = false
 var shoot_button_down = false
