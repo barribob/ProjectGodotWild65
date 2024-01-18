@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var item_scene: PackedScene = load("res://item.tscn")
 @onready var damage_indicator_scene: PackedScene = load("res://damage_indicator.tscn")
+@onready var soft_collision_area: Area3D = $SoftCollision
 
 var player
 var speed = 3.0
@@ -23,15 +24,22 @@ func _physics_process(delta):
         velocity = lerp(velocity, -transform.basis.z * speed * force_away_multiplier, delta * move_lag)
     else:
         velocity = lerp(velocity, Vector2.ZERO, delta * move_lag)
+    force_away_from_other_enemies()
 
     move_and_slide()
 
+func force_away_from_other_enemies():
+    for collider in soft_collision_area.get_overlapping_areas():
+        var force_away = global_position - collider.global_position
+        var force_amt = 1 / clampf(force_away.length_squared(), 0.1, 1.0) * 0.5
+        velocity += force_away.normalized() * force_amt
+
 func init(in_player, type):
     player = in_player
-    player.player_damaged.connect(force_away)
+    player.player_damaged.connect(force_away_from_damaged_player)
     enemy_type = type
 
-func force_away(params):
+func force_away_from_damaged_player(params):
     var distance = (player.global_position - global_position).length()
     if distance < 3:
         var dir = (player.global_position - global_position).normalized()
@@ -54,7 +62,7 @@ func die():
     item.position = position
     item.start(player)
     get_parent().add_child(item)
-    player.player_damaged.disconnect(force_away)
+    player.player_damaged.disconnect(force_away_from_damaged_player)
     queue_free()
 
 func _on_damage_area_area_entered(area):

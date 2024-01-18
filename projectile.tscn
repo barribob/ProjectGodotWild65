@@ -17,9 +17,11 @@ pixel_size = 0.001
 texture = SubResource("PlaceholderTexture2D_8q1yn")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00726318, 0.0098877, 0.00161743)
 shape = SubResource("BoxShape3D_6cllb")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
