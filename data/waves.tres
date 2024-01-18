@@ -1,24 +1,20 @@
-[gd_resource type="Resource" script_class="EnemyWaves" load_steps=7 format=3 uid="uid://cxihbbxfrrs8t"]
+[gd_resource type="Resource" script_class="EnemyWaves" load_steps=9 format=3 uid="uid://cxihbbxfrrs8t"]
 
 [ext_resource type="Script" path="res://EnemyWaves.gd" id="1_1q0wo"]
 [ext_resource type="Resource" uid="uid://dwyak2p8fd80h" path="res://data/enemy_type_1.tres" id="2_752yq"]
 [ext_resource type="Script" path="res://EnemySpawn.gd" id="3_mtume"]
-[ext_resource type="Resource" uid="uid://w7tu171byj6t" path="res://data/enemy_type_2.tres" id="4_tpcya"]
+[ext_resource type="Resource" uid="uid://dlkoc2c2w5154" path="res://data/waves/enemy_spawn_1.tres" id="4_hgome"]
+[ext_resource type="Resource" uid="uid://41p26cbc6pu" path="res://data/waves/enemy_spawn_2.tres" id="5_ybeyo"]
+[ext_resource type="Resource" uid="uid://bmbu8uf8880bg" path="res://data/waves/enemy_spawn_1_10.tres" id="6_toc31"]
+[ext_resource type="Resource" uid="uid://cnka4867awrgp" path="res://data/waves/enemy_spawn_2_10.tres" id="7_juja2"]
 
 [sub_resource type="Resource" id="Resource_x8dkp"]
 script = ExtResource("3_mtume")
 enemy_type = ExtResource("2_752yq")
-spawn_amount = 10
+spawn_amount = 5
 initial_delay = 0.1
-in_between_delay = 0.2
-
-[sub_resource type="Resource" id="Resource_ndpra"]
-script = ExtResource("3_mtume")
-enemy_type = ExtResource("4_tpcya")
-spawn_amount = 10
-initial_delay = 5.0
 in_between_delay = 0.2
 
 [resource]
 script = ExtResource("1_1q0wo")
-waves = Array[ExtResource("3_mtume")]([SubResource("Resource_x8dkp"), SubResource("Resource_ndpra")])
+waves = Array[ExtResource("3_mtume")]([SubResource("Resource_x8dkp"), ExtResource("4_hgome"), ExtResource("4_hgome"), ExtResource("4_hgome"), ExtResource("4_hgome"), ExtResource("5_ybeyo"), ExtResource("4_hgome"), ExtResource("6_toc31"), ExtResource("5_ybeyo"), ExtResource("5_ybeyo"), ExtResource("4_hgome"), ExtResource("7_juja2"), ExtResource("6_toc31"), ExtResource("4_hgome"), ExtResource("5_ybeyo"), ExtResource("6_toc31"), ExtResource("6_toc31"), ExtResource("5_ybeyo"), ExtResource("7_juja2"), ExtResource("4_hgome"), ExtResource("6_toc31"), ExtResource("6_toc31"), ExtResource("7_juja2"), ExtResource("7_juja2"), ExtResource("7_juja2")])

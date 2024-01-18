@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemySpawn" load_steps=3 format=3 uid="uid://bmbu8uf8880bg"]
+
+[ext_resource type="Resource" uid="uid://dwyak2p8fd80h" path="res://data/enemy_type_1.tres" id="1_cxcsv"]
+[ext_resource type="Script" path="res://EnemySpawn.gd" id="2_wa4k5"]
+
+[resource]
+script = ExtResource("2_wa4k5")
+enemy_type = ExtResource("1_cxcsv")
+spawn_amount = 10
+initial_delay = 5.0
+in_between_delay = 0.2
