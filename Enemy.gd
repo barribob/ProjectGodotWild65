@@ -11,9 +11,10 @@ var force_away_speed = 20.0
 var force_away_multiplier = 1.0
 var health: float
 var enemy_type: EnemyType
+var model
 
 func _ready():
-    var model = enemy_type.model.instantiate()
+    model = enemy_type.model.instantiate()
     add_child(model)
     model.animation_player.play("RunFoward")
     health = enemy_type.health
@@ -55,6 +56,7 @@ func damage(damage_params):
     damage_indicator.text = Utils.format_whole(damage_params.damage * 10)
     damage_indicator.position = global_position + Vector3.UP * 2
     get_parent().add_child(damage_indicator)
+    model.flash()
     if Utils.leq(health, 0):
         die()
 
