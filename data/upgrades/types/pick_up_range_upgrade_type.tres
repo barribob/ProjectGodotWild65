@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://b1d0ej3mh2qev"]
+
+[ext_resource type="Script" path="res://UpgradeType.gd" id="1_pgdpq"]
+[ext_resource type="Resource" uid="uid://bnidk4gx2l2e8" path="res://data/upgrades/pick_up_range_upgrade.tres" id="2_vfwbv"]
+
+[resource]
+script = ExtResource("1_pgdpq")
+name = "Pick Up Range"
+upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_vfwbv"), ExtResource("2_vfwbv"), ExtResource("2_vfwbv"), ExtResource("2_vfwbv"), ExtResource("2_vfwbv"), ExtResource("2_vfwbv")])

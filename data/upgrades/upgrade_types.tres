@@ -1,26 +1,10 @@
-[gd_resource type="Resource" script_class="UpgradeTypes" load_steps=9 format=3 uid="uid://ijio8ajq86ow"]
+[gd_resource type="Resource" script_class="UpgradeTypes" load_steps=5 format=3 uid="uid://ijio8ajq86ow"]
 
 [ext_resource type="Script" path="res://UpgradeTypes.gd" id="1_nxkm6"]
-[ext_resource type="Script" path="res://UpgradeType.gd" id="2_3d2pb"]
-[ext_resource type="Resource" uid="uid://wg7nefxaqkmc" path="res://data/upgrades/damage_upgrade.tres" id="3_q7dw2"]
-[ext_resource type="Resource" uid="uid://ci4s5kqb4jfu6" path="res://data/upgrades/fire_rate_upgrade.tres" id="4_sqb0s"]
-[ext_resource type="Resource" uid="uid://e7xpjes5e1pe" path="res://data/upgrades/reload_speed_upgrade.tres" id="5_k5vx1"]
-
-[sub_resource type="Resource" id="Resource_50j8p"]
-script = ExtResource("2_3d2pb")
-name = "Damage"
-upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("3_q7dw2"), ExtResource("3_q7dw2"), ExtResource("3_q7dw2")])
-
-[sub_resource type="Resource" id="Resource_21caa"]
-script = ExtResource("2_3d2pb")
-name = "Fire Rate"
-upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("4_sqb0s"), ExtResource("4_sqb0s"), ExtResource("4_sqb0s")])
-
-[sub_resource type="Resource" id="Resource_4xa5g"]
-script = ExtResource("2_3d2pb")
-name = "Reload Speed"
-upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("5_k5vx1"), ExtResource("5_k5vx1"), ExtResource("5_k5vx1")])
+[ext_resource type="Resource" uid="uid://pxjghrowxe8" path="res://data/upgrades/types/damage_upgrade_type.tres" id="2_p47mq"]
+[ext_resource type="Resource" uid="uid://csu618ldxey6v" path="res://data/upgrades/types/fire_rate_upgrade_type.tres" id="3_pino4"]
+[ext_resource type="Resource" uid="uid://cjngymof0ab4w" path="res://data/upgrades/types/reload_speed_upgrade_type.tres" id="4_s2ios"]
 
 [resource]
 script = ExtResource("1_nxkm6")
-types = Array[ExtResource("2_3d2pb")]([SubResource("Resource_50j8p"), SubResource("Resource_21caa"), SubResource("Resource_4xa5g")])
+types = Array[Resource("res://UpgradeType.gd")]([ExtResource("2_p47mq"), ExtResource("3_pino4"), ExtResource("4_s2ios")])

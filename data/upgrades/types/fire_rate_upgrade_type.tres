@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://csu618ldxey6v"]
+
+[ext_resource type="Script" path="res://UpgradeType.gd" id="1_2yccn"]
+[ext_resource type="Resource" uid="uid://ci4s5kqb4jfu6" path="res://data/upgrades/fire_rate_upgrade.tres" id="2_cfyxv"]
+
+[resource]
+script = ExtResource("1_2yccn")
+name = "Fire Rate"
+upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_cfyxv"), ExtResource("2_cfyxv"), ExtResource("2_cfyxv"), ExtResource("2_cfyxv"), ExtResource("2_cfyxv")])

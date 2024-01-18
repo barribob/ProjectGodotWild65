@@ -8,4 +8,4 @@ class_name Upgrade
 @export var max_health: int
 @export var damage: float
 @export var pick_up_range: float
-@export var move_speed: int
+@export var move_speed: float

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://c343l725huqq5"]
+
+[ext_resource type="Script" path="res://UpgradeType.gd" id="1_6us5w"]
+[ext_resource type="Resource" uid="uid://deq2haoq64gjg" path="res://data/upgrades/move_speed_upgrade.tres" id="2_bj16a"]
+
+[resource]
+script = ExtResource("1_6us5w")
+name = "Move Speed"
+upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_bj16a"), ExtResource("2_bj16a"), ExtResource("2_bj16a"), ExtResource("2_bj16a"), ExtResource("2_bj16a")])

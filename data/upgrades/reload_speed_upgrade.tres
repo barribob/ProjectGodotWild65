@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_rbfyi")
 fire_rate = 0.0
-reload_speed = 1.0
+reload_speed = 0.15
 clip_size = 0
 max_health = 0
 damage = 0.0
 pick_up_range = 0.0
-move_speed = 0
+move_speed = 0.0

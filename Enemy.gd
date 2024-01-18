@@ -52,7 +52,7 @@ func force_away_from_damaged_player(params):
 func damage(damage_params):
     health -= damage_params.damage
     var damage_indicator = damage_indicator_scene.instantiate()
-    damage_indicator.text = Utils.format_whole(damage_params.damage)
+    damage_indicator.text = Utils.format_whole(damage_params.damage * 10)
     damage_indicator.position = global_position + Vector3.UP * 2
     get_parent().add_child(damage_indicator)
     if Utils.leq(health, 0):

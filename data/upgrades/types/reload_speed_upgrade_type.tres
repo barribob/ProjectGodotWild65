@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://cjngymof0ab4w"]
+
+[ext_resource type="Script" path="res://UpgradeType.gd" id="1_lxrcm"]
+[ext_resource type="Resource" uid="uid://e7xpjes5e1pe" path="res://data/upgrades/reload_speed_upgrade.tres" id="2_16xk3"]
+
+[resource]
+script = ExtResource("1_lxrcm")
+name = "Reload Speed"
+upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_16xk3"), ExtResource("2_16xk3"), ExtResource("2_16xk3"), ExtResource("2_16xk3"), ExtResource("2_16xk3")])
