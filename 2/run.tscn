@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=17 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
 [ext_resource type="PackedScene" uid="uid://l15ou16u2m26" path="res://player.tscn" id="2_0nnb1"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://HUD.gd" id="4_54ge4"]
 [ext_resource type="PackedScene" uid="uid://psj8ws7tw4fe" path="res://upgrades_panel.tscn" id="5_0mes8"]
 [ext_resource type="Script" path="res://HealthBar.gd" id="5_7qsy8"]
+[ext_resource type="Script" path="res://2/AmmoDisplay.gd" id="6_klbc4"]
 [ext_resource type="Script" path="res://GameOver.gd" id="7_bjspu"]
+[ext_resource type="Texture2D" uid="uid://csik7oxvt7tq3" path="res://addons/script-ide/icon/class.svg" id="7_vbrhe"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="7_x3db4"]
 [ext_resource type="Script" path="res://2/CameraFollow.gd" id="9_lsdtg"]
 [ext_resource type="PackedScene" uid="uid://4bnl5l4ndplr" path="res://environment/TheOVERWorld5.glb" id="10_0014q"]
@@ -90,6 +92,20 @@ layout_mode = 2
 theme_override_constants/separation = 10
 script = ExtResource("5_7qsy8")
 
+[node name="Ammo" type="VBoxContainer" parent="HUDLayer/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -194.0
+offset_right = 69.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+alignment = 2
+script = ExtResource("6_klbc4")
+full_texture = ExtResource("7_vbrhe")
+
 [node name="UpgradesLayer" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -100,6 +116,7 @@ visible = false
 [node name="EndGameLayer" type="CanvasLayer" parent="."]
 
 [node name="GameOver" type="Control" parent="EndGameLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

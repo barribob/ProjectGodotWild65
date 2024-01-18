@@ -17,8 +17,22 @@ const base_damage = 1
 
 var shoot_interval = base_shoot_interval
 var shoot_cooldown = 0.0
-var clip_size = base_clip_size
-var current_ammo: int = 5
+var _clip_size: int
+var clip_size: int:
+    get:
+        return _clip_size
+    set(value):
+        _clip_size = value
+        EventBus.ammo_updated.emit(current_ammo, value)
+
+var _current_ammo: int
+var current_ammo: int:
+    get:
+        return _current_ammo
+    set(value):
+        _current_ammo = value
+        EventBus.ammo_updated.emit(value, clip_size)
+
 var reload_time = base_reload_time
 var reload_cooldown = 0.0
 var is_reloading = false
@@ -32,6 +46,9 @@ var upper_body_animation: AnimationNodeStateMachinePlayback
 func _ready():
     upper_body_animation = animation_tree.get("parameters/UpperBodyStateMachine/playback")
     animation_tree.set("parameters/UpperBodyBlend/blend_amount", 0.0)
+    await get_tree().create_timer(0.1).timeout
+    clip_size = base_clip_size
+    current_ammo = base_clip_size
 
 func _process(delta):
     reticle.global_position = Utils.get_3d_mouse_pos(0.1, self, get_viewport().get_camera_3d())

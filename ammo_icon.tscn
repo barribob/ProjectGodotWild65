@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cim0578m7l3fv"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mafsk"]
+size = Vector2(64, 64)
+
+[node name="HealthIcon" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+texture = SubResource("PlaceholderTexture2D_mafsk")
