@@ -32,6 +32,7 @@ ambient_light_energy = 0.5
 reflected_light_source = 1
 tonemap_mode = 2
 tonemap_white = 16.0
+glow_blend_mode = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gdf6h"]
 

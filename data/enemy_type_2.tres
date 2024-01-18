@@ -7,3 +7,4 @@
 script = ExtResource("2_5km4s")
 model = ExtResource("1_hmjgg")
 health = 2.0
+speed = 2.5

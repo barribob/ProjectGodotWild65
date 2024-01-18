@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var soft_collision_area: Area3D = $SoftCollision
 
 var player
-var speed = 3.0
+var speed
 var move_lag : float = 16.0
 var force_away_speed = 20.0
 var force_away_multiplier = 1.0
@@ -38,6 +38,7 @@ func init(in_player, type):
     player = in_player
     player.player_damaged.connect(force_away_from_damaged_player)
     enemy_type = type
+    speed = enemy_type.speed
 
 func force_away_from_damaged_player(params):
     var distance = (player.global_position - global_position).length()
