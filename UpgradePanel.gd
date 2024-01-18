@@ -54,4 +54,4 @@ func add_upgrade(upgrade, upgrade_type):
         upgrades_by_type[upgrade_type] = []
 
     upgrades_by_type[upgrade_type].append(upgrade)
-    EventBus.upgrade_added.emit(upgrade_type, upgrades_by_type)
+    EventBus.upgrade_added.emit(upgrades_by_type)

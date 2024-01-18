@@ -6,7 +6,7 @@ extends Node
 func _ready():
     EventBus.upgrade_added.connect(recalculate_upgrade_type)
 
-func recalculate_upgrade_type(upgrade_type, upgrades_by_type):
+func recalculate_upgrade_type(upgrades_by_type):
     var fire_rate_upgrade = 0.0
     var reload_speed_upgrade = 0.0
     var clip_size_upgrade: int = 0
@@ -14,13 +14,14 @@ func recalculate_upgrade_type(upgrade_type, upgrades_by_type):
     var move_speed_upgrade = 0.0
     var damage_upgrade = 0.0
 
-    for upgrade in upgrades_by_type[upgrade_type]:
-        fire_rate_upgrade += upgrade.fire_rate
-        reload_speed_upgrade += upgrade.reload_speed
-        clip_size_upgrade += upgrade.clip_size
-        pick_up_range_upgrade += upgrade.pick_up_range
-        move_speed_upgrade += upgrade.move_speed
-        damage_upgrade += upgrade.damage
+    for upgrade_type in upgrades_by_type:
+        for upgrade in upgrades_by_type[upgrade_type]:
+            fire_rate_upgrade += upgrade.fire_rate
+            reload_speed_upgrade += upgrade.reload_speed
+            clip_size_upgrade += upgrade.clip_size
+            pick_up_range_upgrade += upgrade.pick_up_range
+            move_speed_upgrade += upgrade.move_speed
+            damage_upgrade += upgrade.damage
 
     shoot_handler.shoot_interval = shoot_handler.base_shoot_interval / (1 + fire_rate_upgrade)
     shoot_handler.reload_time = shoot_handler.base_reload_time / (1 + reload_speed_upgrade)
