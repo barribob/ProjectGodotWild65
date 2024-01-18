@@ -7,6 +7,7 @@ var player
 var speed = 3.0
 var move_lag : float = 16.0
 var force_away_speed = 20.0
+var force_away_multiplier = 1.0
 var health: float
 var enemy_type: EnemyType
 
@@ -19,7 +20,7 @@ func _ready():
 func _physics_process(delta):
     if player:
         look_at(player.global_position, Vector3.UP)
-        velocity = lerp(velocity, -transform.basis.z * speed, delta * move_lag)
+        velocity = lerp(velocity, -transform.basis.z * speed * force_away_multiplier, delta * move_lag)
     else:
         velocity = lerp(velocity, Vector2.ZERO, delta * move_lag)
 
@@ -35,6 +36,9 @@ func force_away(params):
     if distance < 3:
         var dir = (player.global_position - global_position).normalized()
         velocity += dir * -1 * force_away_speed
+        force_away_multiplier = 0.0
+        await get_tree().create_timer(0.1).timeout
+        force_away_multiplier = 1.0
 
 func damage(damage_params):
     health -= damage_params.damage

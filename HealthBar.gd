@@ -2,7 +2,7 @@ extends HBoxContainer
 
 signal died
 
-const damage_slow := 0.01
+const damage_slow := 0.07
 const damage_slow_time := 0.5
 var health = 3
 @onready var health_icon_scene: PackedScene = load("res://health_icon.tscn")
