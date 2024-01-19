@@ -7,6 +7,7 @@ enum TriggerType {
     EveryXShot,
     Reload,
     LastFired,
+    FirstFired,
 }
 
 enum TriggerEvent {

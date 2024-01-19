@@ -5,6 +5,7 @@ signal reload_start(cooldown)
 signal reload_cancel
 signal reload_finish
 signal last_fired
+signal first_fired
 
 @onready var reticle = $Reticle
 @onready var pivot = $"../RotationalPivot"
@@ -80,6 +81,8 @@ func _process(delta):
         current_ammo -= 1
         if current_ammo == 0:
             last_fired.emit()
+        elif current_ammo == clip_size - 1:
+            first_fired.emit()
         is_reloading = false
         reload_cancel.emit()
         reload_cooldown = 0 # cancel any in-progress reloads
