@@ -145,3 +145,8 @@ func shoot_in_circle():
         var dir = Vector3.BACK
         var dir_rotated = dir.rotated(Vector3.UP, deg_to_rad(i * TAU * (number - 1)))
         b.velocity = dir_rotated * b.muzzle_velocity
+
+func shoot_backwards():
+    var b = create_projectile()
+    var dir_xy = get_aim_dir()
+    b.velocity = dir_xy * -1 * b.muzzle_velocity

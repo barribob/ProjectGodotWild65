@@ -14,5 +14,6 @@ enum TriggerEvent {
     None,
     Spread5,
     Circle,
-    Parallel2
+    Parallel2,
+    Backwards
 }
