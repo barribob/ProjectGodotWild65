@@ -40,7 +40,7 @@ var shoot_button_down = false
 var time_idle_to_auto_reload = 0.3
 var idle_time = 0.0
 var damage = base_damage
-
+var shot_counter = 0
 var upper_body_animation: AnimationNodeStateMachinePlayback
 
 func _ready():
@@ -71,6 +71,7 @@ func _process(delta):
         animation_tree.set("parameters/UpperBodyBlend/blend_amount", 0.95)
         upper_body_animation.start("shoot")
         shoot()
+        shot_counter += 1
         fired.emit()
         shoot_cooldown = shoot_interval
         current_ammo -= 1
@@ -93,12 +94,30 @@ func _unhandled_input(event):
         if !shoot_button_down:
             animation_tree.set("parameters/UpperBodyBlend/blend_amount", 0.0)
 
-func shoot():
+func create_projectile():
     var b = projectile.instantiate()
     owner.get_parent().add_child(b)
     var params = { speed = 10, damage = damage }
+    b.start(params)
+    return b
+
+func get_aim_dir():
     var direction = (reticle.global_position - projectile_output.global_position)
     var dir_xy = Vector3(direction.x, 0, direction.z).normalized()
-    b.start(params)
+    return dir_xy
+
+func shoot():
+    var b = create_projectile()
+    var dir_xy = get_aim_dir()
     b.transform = projectile_output.global_transform
     b.velocity = dir_xy * b.muzzle_velocity
+
+func shoot_in_fan():
+    var min_angle = -45
+    var angle_between = 30
+    for i in 4:
+        var b = create_projectile()
+        var dir_xy = get_aim_dir()
+        var dir_rotated = dir_xy.rotated(Vector3.UP, deg_to_rad(i * angle_between + min_angle))
+        b.transform = projectile_output.global_transform
+        b.velocity = dir_rotated * b.muzzle_velocity

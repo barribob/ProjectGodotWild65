@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://b8pfrvibpg2e4"]
+
+[ext_resource type="Script" path="res://Upgrade.gd" id="1_qnwtb"]
+
+[resource]
+script = ExtResource("1_qnwtb")
+fire_rate = 0.0
+reload_speed = 0.0
+clip_size = 0
+max_health = 0
+damage = 0.0
+pick_up_range = 0.0
+move_speed = 0.0
+trigger_type = 1
+trigger_value = 5.0
+trigger_event = 1

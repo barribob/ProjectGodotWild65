@@ -9,3 +9,6 @@ class_name Upgrade
 @export var damage: float
 @export var pick_up_range: float
 @export var move_speed: float
+@export var trigger_type: Enums.TriggerType
+@export var trigger_value: float
+@export var trigger_event: Enums.TriggerEvent
