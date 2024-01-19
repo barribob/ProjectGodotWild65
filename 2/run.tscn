@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=18 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
 [ext_resource type="Script" path="res://CurrentRun.gd" id="1_xrvck"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://csik7oxvt7tq3" path="res://addons/script-ide/icon/class.svg" id="7_vbrhe"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="7_x3db4"]
 [ext_resource type="Script" path="res://2/CameraFollow.gd" id="9_lsdtg"]
+[ext_resource type="PackedScene" path="res://environment/TheOVERWorld9.glb" id="13_rs1q1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sy8ao"]
 sky_top_color = Color(0.211765, 0.313726, 0.552941, 1)
@@ -35,12 +36,6 @@ tonemap_white = 16.0
 glow_blend_mode = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gdf6h"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_kvpjc"]
-size = Vector2(200, 200)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6bcp"]
-albedo_color = Color(0.196078, 0.2, 0.192157, 1)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_xrvck")
@@ -269,10 +264,6 @@ max_offset = Vector3(100, 0, 100)
 [node name="Camera3D" type="Camera3D" parent="CameraFollow"]
 transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 10.941, 6.03703)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_kvpjc")
-surface_material_override/0 = SubResource("StandardMaterial3D_x6bcp")
-
 [node name="SpawnPositions" type="Node3D" parent="."]
 
 [node name="SpawnPosition" type="Area3D" parent="SpawnPositions"]
@@ -372,6 +363,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -15)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnPositions/SpawnPositions/SpawnPosition8"]
 shape = SubResource("CylinderShape3D_gdf6h")
+
+[node name="TheOVERWorld9" parent="." instance=ExtResource("13_rs1q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.3, -3.32, -140.061)
 
 [connection signal="player_damaged" from="Player" to="HUDLayer/HUD/MarginContainer/VBoxContainer/Health" method="_on_player_player_damaged"]
 [connection signal="leveled" from="HUDLayer/HUD" to="Player" method="_on_hud_leveled"]
