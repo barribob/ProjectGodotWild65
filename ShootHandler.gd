@@ -97,6 +97,8 @@ func shoot():
     var b = projectile.instantiate()
     owner.get_parent().add_child(b)
     var params = { speed = 10, damage = damage }
+    var direction = (reticle.global_position - projectile_output.global_position)
+    var dir_xy = Vector3(direction.x, 0, direction.z).normalized()
     b.start(params)
     b.transform = projectile_output.global_transform
-    b.velocity = -b.transform.basis.z * b.muzzle_velocity
+    b.velocity = dir_xy * b.muzzle_velocity

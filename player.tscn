@@ -4897,7 +4897,7 @@ mesh = SubResource("ArrayMesh_vonhi")
 skin = SubResource("Skin_itvp4")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Model/RotationFix/PlayerRobot/metarig/Skeleton3D"]
-transform = Transform3D(0.999079, 0.00938475, 0.041874, -0.000203314, 0.976818, -0.214072, -0.0429123, 0.213866, 0.97592, 0.000638541, 1.26813, 0.0254948)
+transform = Transform3D(0.999079, 0.00938478, 0.0418741, -0.000203319, 0.976818, -0.214072, -0.0429124, 0.213867, 0.97592, 0.000638542, 1.26813, 0.0254948)
 bone_name = "spine.002"
 bone_idx = 7
 
