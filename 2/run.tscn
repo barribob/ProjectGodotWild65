@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=20 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
+[ext_resource type="Script" path="res://CurrentRun.gd" id="1_xrvck"]
 [ext_resource type="PackedScene" uid="uid://l15ou16u2m26" path="res://player.tscn" id="2_0nnb1"]
 [ext_resource type="Theme" uid="uid://cfu445y3vjite" path="res://data/theme.tres" id="3_2vge8"]
 [ext_resource type="Script" path="res://HUD.gd" id="4_54ge4"]
@@ -43,6 +44,7 @@ size = Vector2(200, 200)
 albedo_color = Color(0.196078, 0.2, 0.192157, 1)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_xrvck")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ach2a")
