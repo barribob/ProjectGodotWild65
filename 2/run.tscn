@@ -34,6 +34,7 @@ ambient_light_energy = 0.5
 reflected_light_source = 1
 tonemap_mode = 2
 tonemap_white = 16.0
+glow_enabled = true
 glow_blend_mode = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gdf6h"]
@@ -46,8 +47,9 @@ environment = SubResource("Environment_ach2a")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.611003, -0.789813, 0.0535753, 0.0319309, 0.0922108, 0.995228, -0.790984, -0.606376, 0.0815605, 0, 4.29437, 0)
+visible = false
 light_energy = 0.1
-shadow_enabled = true
+directional_shadow_mode = 0
 
 [node name="Player" parent="." instance=ExtResource("2_0nnb1")]
 unique_name_in_owner = true

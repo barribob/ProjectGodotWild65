@@ -2,24 +2,18 @@
 
 [ext_resource type="Script" path="res://Projectile.gd" id="1_8681s"]
 
-[sub_resource type="Gradient" id="Gradient_8f7hl"]
-colors = PackedColorArray(1.1, 1, 0.4, 1, 1.1, 1, 0.4, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_keiiv"]
-gradient = SubResource("Gradient_8f7hl")
-width = 100
-height = 300
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_6cllb"]
 size = Vector3(0.122971, 0.106201, 0.327091)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_0jijf"]
+size = Vector2(0.1, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwv4e"]
+shading_mode = 0
+albedo_color = Color(2.3, 2.3, 0.5, 1)
+
 [node name="Projectile" type="Node3D"]
 script = ExtResource("1_8681s")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-pixel_size = 0.001
-texture = SubResource("GradientTexture2D_keiiv")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
@@ -28,5 +22,9 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.33964e-05, 0.0098877, 0.00267979)
 shape = SubResource("BoxShape3D_6cllb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_0jijf")
+surface_material_override/0 = SubResource("StandardMaterial3D_dwv4e")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

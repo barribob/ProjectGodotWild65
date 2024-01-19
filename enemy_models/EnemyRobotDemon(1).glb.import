@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2ku7aokf2s6o"
-path="res://.godot/imported/EnemyRobotDemon.glb-5555e99b5a85bef4814ac391df50f10f.scn"
+uid="uid://cur757om2otis"
+path="res://.godot/imported/EnemyRobotDemon(1).glb-b2e8126c291b50e1c08781214056951f.scn"
 
 [deps]
 
-source_file="res://enemy_models/EnemyRobotDemon.glb"
-dest_files=["res://.godot/imported/EnemyRobotDemon.glb-5555e99b5a85bef4814ac391df50f10f.scn"]
+source_file="res://enemy_models/EnemyRobotDemon(1).glb"
+dest_files=["res://.godot/imported/EnemyRobotDemon(1).glb-b2e8126c291b50e1c08781214056951f.scn"]
 
 [params]
 
