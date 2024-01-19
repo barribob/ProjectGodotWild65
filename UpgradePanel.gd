@@ -23,12 +23,12 @@ func upgrade_chosen(upgrade):
     close_and_resume()
 
 func close_and_resume():
-    get_tree().paused = false
+    TimeManager.unpause_tree()
     hide()
 
 func open_and_pause():
-    await get_tree().create_timer(0.5).timeout
-    get_tree().paused = true
+    await get_tree().create_timer(0.7).timeout
+    TimeManager.pause_tree()
     show()
     var upgrades = get_available_upgrades()
     for i in 3:

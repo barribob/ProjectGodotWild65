@@ -13,7 +13,7 @@ func _ready():
     Console.add_command("exp", func(e): gain_exp(int(e)), 1)
     %Player.gain_exp.connect(gain_exp)
     max_exp = level_data.levels[0]
-    exp_bar.max_value = max_exp    
+    exp_bar.max_value = max_exp
 
 func gain_exp(amt):
     exp += amt
@@ -22,6 +22,6 @@ func gain_exp(amt):
         current_level += 1
         max_exp = level_data.levels[current_level]
         leveled.emit()
-    
+
     exp_bar.value = exp
     exp_bar.max_value = max_exp

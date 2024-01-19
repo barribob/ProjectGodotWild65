@@ -14,3 +14,11 @@ func _process(delta):
         freeze_time -= (delta / Engine.time_scale)
         if freeze_time <= 0:
             Engine.time_scale = 1
+
+func unpause_tree():
+    get_tree().paused = false
+    freeze_time = 0
+    Engine.time_scale = 1
+
+func pause_tree():
+    get_tree().paused = true

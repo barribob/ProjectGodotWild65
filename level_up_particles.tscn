@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://wtcdkdcusywy"]
+
+[ext_resource type="Script" path="res://TemporaryParticles.gd" id="1_5r8bp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4fqe"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+emission = Color(1, 1, 1, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_b7bxr"]
+material = SubResource("StandardMaterial3D_i4fqe")
+size = Vector2(0.1, 0.1)
+
+[node name="LevelUpParticles" type="CPUParticles3D"]
+emitting = false
+amount = 40
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+mesh = SubResource("QuadMesh_b7bxr")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.5
+direction = Vector3(0, 1, 0)
+spread = 10.0
+gravity = Vector3(0, 9.8, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 11.0
+tangential_accel_min = 10.0
+tangential_accel_max = 15.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color = Color(1.1, 1.1, 1.1, 1)
+script = ExtResource("1_5r8bp")

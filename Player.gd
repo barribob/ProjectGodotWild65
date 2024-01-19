@@ -6,6 +6,7 @@ signal player_damaged(damage_params)
 @onready var animation_tree: AnimationTree = %AnimationTree
 @onready var model = $Model
 @onready var reticle = $ShootHandler/Reticle
+@onready var level_up_particle_scene = load("res://level_up_particles.tscn")
 
 const base_pick_up_range = 2.5
 const base_speed = 5.0
@@ -64,3 +65,7 @@ func _on_shoot_handler_fired():
 
 func _on_item_detection_picked(params):
     gain_exp.emit(1)
+
+func _on_hud_leveled():
+    var level_up_particles = level_up_particle_scene.instantiate()
+    add_child(level_up_particles)

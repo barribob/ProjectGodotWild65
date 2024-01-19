@@ -378,6 +378,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -15)
 shape = SubResource("CylinderShape3D_gdf6h")
 
 [connection signal="player_damaged" from="Player" to="HUDLayer/HUD/MarginContainer/VBoxContainer/Health" method="_on_player_player_damaged"]
+[connection signal="leveled" from="HUDLayer/HUD" to="Player" method="_on_hud_leveled"]
 [connection signal="leveled" from="HUDLayer/HUD" to="UpgradesLayer/UpgradesPanel" method="leveled_up"]
 [connection signal="died" from="HUDLayer/HUD/MarginContainer/VBoxContainer/Health" to="EndGameLayer/GameOver" method="_on_health_died"]
 [connection signal="pressed" from="EndGameLayer/GameOver/VBoxContainer/MenuButtons/RestartButton" to="EndGameLayer/GameOver" method="_on_restart_button_pressed"]
