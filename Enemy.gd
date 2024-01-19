@@ -66,6 +66,7 @@ func die():
     item.start(player)
     get_parent().add_child(item)
     player.player_damaged.disconnect(force_away_from_damaged_player)
+    model.spawn_death_effect(get_parent())
     queue_free()
 
 func _on_damage_area_area_entered(area):

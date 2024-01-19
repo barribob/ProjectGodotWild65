@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0r1kcdelmurt"]
+[gd_scene load_steps=22 format=3 uid="uid://d0r1kcdelmurt"]
 
 [ext_resource type="Script" path="res://EnemyModel.gd" id="1_pw48x"]
 [ext_resource type="Material" uid="uid://0f8tkyr1588y" path="res://flash_material.tres" id="2_kratj"]
+[ext_resource type="PackedScene" uid="uid://b71lr0oe5qobf" path="res://enemy_death_particles.tscn" id="2_wfbie"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx4pj"]
 resource_name = "brown rust"
@@ -5285,6 +5286,7 @@ _data = {
 transform = Transform3D(-0.9, 0, -7.86805e-08, 0, 0.9, 0, 7.86805e-08, 0, -0.9, 0, 0, 0)
 script = ExtResource("1_pw48x")
 mesh = NodePath("metarig/Skeleton3D/Cube_002")
+death_particles_scene = ExtResource("2_wfbie")
 
 [node name="metarig" type="Node3D" parent="."]
 
