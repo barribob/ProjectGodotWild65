@@ -14,6 +14,11 @@ func start(in_shoot_handler, in_upgrade_event, trigger_type, in_trigger_value):
         shoot_handler.fired.connect(on_fired)
     elif trigger_type == Enums.TriggerType.Reload:
         shoot_handler.reload_finish.connect(on_reload)
+    elif trigger_type == Enums.TriggerType.LastFired:
+        shoot_handler.last_fired.connect(last_fired)
+
+func last_fired():
+    upgrade_event.trigger()
 
 func on_reload():
     upgrade_event.trigger()

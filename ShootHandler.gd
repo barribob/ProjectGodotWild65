@@ -4,6 +4,7 @@ signal fired
 signal reload_start(cooldown)
 signal reload_cancel
 signal reload_finish
+signal last_fired
 
 @onready var reticle = $Reticle
 @onready var pivot = $"../RotationalPivot"
@@ -77,6 +78,8 @@ func _process(delta):
         fired.emit()
         shoot_cooldown = shoot_interval
         current_ammo -= 1
+        if current_ammo == 0:
+            last_fired.emit()
         is_reloading = false
         reload_cancel.emit()
         reload_cooldown = 0 # cancel any in-progress reloads
@@ -122,6 +125,15 @@ func shoot_in_fan():
         var dir_xy = get_aim_dir()
         var dir_rotated = dir_xy.rotated(Vector3.UP, deg_to_rad(i * angle_between + min_angle))
         b.velocity = dir_rotated * b.muzzle_velocity
+
+func shoot_parallel():
+    var left = create_projectile()
+    var dir_xy = get_aim_dir()
+    left.position += left.transform.basis.x * 0.5
+    left.velocity = dir_xy * left.muzzle_velocity
+    var right = create_projectile()
+    right.position -= right.transform.basis.x * 0.5
+    right.velocity = dir_xy * right.muzzle_velocity
 
 func shoot_in_circle():
     var number = 8

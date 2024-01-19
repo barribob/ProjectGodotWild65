@@ -14,3 +14,5 @@ func trigger():
         shoot_handler.shoot_in_fan()
     if event_type == Enums.TriggerEvent.Circle:
         shoot_handler.shoot_in_circle()
+    if event_type == Enums.TriggerEvent.Parallel2:
+        shoot_handler.shoot_parallel()
