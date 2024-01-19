@@ -3,6 +3,7 @@ extends Node3D
 signal fired
 signal reload_start(cooldown)
 signal reload_cancel
+signal reload_finish
 
 @onready var reticle = $Reticle
 @onready var pivot = $"../RotationalPivot"
@@ -59,6 +60,7 @@ func _process(delta):
         if Utils.leq(reload_cooldown, 0):
             current_ammo = clip_size
             is_reloading = false
+            reload_finish.emit()
 
     shoot_cooldown = clampf(shoot_cooldown - delta, 0, shoot_interval)
 
@@ -96,6 +98,7 @@ func _unhandled_input(event):
 
 func create_projectile():
     var b = projectile.instantiate()
+    b.transform = projectile_output.global_transform
     owner.get_parent().add_child(b)
     var params = { speed = 10, damage = damage }
     b.start(params)
@@ -109,7 +112,6 @@ func get_aim_dir():
 func shoot():
     var b = create_projectile()
     var dir_xy = get_aim_dir()
-    b.transform = projectile_output.global_transform
     b.velocity = dir_xy * b.muzzle_velocity
 
 func shoot_in_fan():
@@ -119,5 +121,12 @@ func shoot_in_fan():
         var b = create_projectile()
         var dir_xy = get_aim_dir()
         var dir_rotated = dir_xy.rotated(Vector3.UP, deg_to_rad(i * angle_between + min_angle))
-        b.transform = projectile_output.global_transform
+        b.velocity = dir_rotated * b.muzzle_velocity
+
+func shoot_in_circle():
+    var number = 8
+    for i in number:
+        var b = create_projectile()
+        var dir = Vector3.BACK
+        var dir_rotated = dir.rotated(Vector3.UP, deg_to_rad(i * TAU * (number - 1)))
         b.velocity = dir_rotated * b.muzzle_velocity

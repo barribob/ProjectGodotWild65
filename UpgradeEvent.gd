@@ -12,3 +12,5 @@ func start(in_shoot_handler, in_event_type):
 func trigger():
     if event_type == Enums.TriggerEvent.Spread5:
         shoot_handler.shoot_in_fan()
+    if event_type == Enums.TriggerEvent.Circle:
+        shoot_handler.shoot_in_circle()

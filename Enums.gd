@@ -4,10 +4,12 @@ class_name Enums
 
 enum TriggerType {
     None,
-    EveryXShot
+    EveryXShot,
+    Reload
 }
 
 enum TriggerEvent {
     None,
-    Spread5
+    Spread5,
+    Circle
 }

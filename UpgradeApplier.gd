@@ -28,7 +28,7 @@ func recalculate_upgrade_type(upgrades_by_type):
                 var event = UpgradeEvent.new()
                 event.start(shoot_handler, upgrade.trigger_event)
                 var trigger = UpgradeTrigger.new()
-                trigger.start(shoot_handler, event, upgrade.trigger_value)
+                trigger.start(shoot_handler, event, upgrade.trigger_type, upgrade.trigger_value)
                 add_child(trigger)
 
     shoot_handler.shoot_interval = shoot_handler.base_shoot_interval / (1 + fire_rate_upgrade)
