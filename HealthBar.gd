@@ -20,3 +20,5 @@ func _on_player_player_damaged(damage_params):
         get_child(0).queue_free()
     if health <= 0:
         died.emit()
+        await get_tree().create_timer(1.0).timeout
+        TimeManager.pause_tree()

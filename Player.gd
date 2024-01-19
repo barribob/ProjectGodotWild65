@@ -15,6 +15,7 @@ const base_speed = 5.0
 
 var pick_up_range = base_pick_up_range
 var slowdown_while_shooting = 0.4
+var is_dead = false
 var slowdown_time = 0.3
 var slowdown_cooldown = 0.0
 var move_speed = base_speed
@@ -46,7 +47,7 @@ func _physics_process(delta):
 
     current_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     var direction = (transform.basis * Vector3(current_input.x, 0, current_input.y)).normalized()
-    if direction:
+    if direction and not is_dead:
         velocity = lerp(velocity, direction * speed, delta * move_lag)
     else:
         velocity = lerp(velocity, Vector3.ZERO, delta * move_lag)
@@ -84,3 +85,7 @@ func _on_item_detection_picked(params):
 func _on_hud_leveled():
     var level_up_particles = level_up_particle_scene.instantiate()
     add_child(level_up_particles)
+
+func _on_health_died():
+    is_dead = true
+    hide()
