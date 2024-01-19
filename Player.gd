@@ -7,6 +7,8 @@ signal player_damaged(damage_params)
 @onready var model = $Model
 @onready var reticle = $ShootHandler/Reticle
 @onready var level_up_particle_scene = load("res://level_up_particles.tscn")
+@onready var mesh: MeshInstance3D = $Model/RotationFix/PlayerRobot/metarig/Skeleton3D/Cube
+@onready var damaged_audio = load("res://sounds/Player_Damage_Hit_SFX_v1.wav")
 
 const base_pick_up_range = 2.5
 const base_speed = 5.0
@@ -22,6 +24,9 @@ var turn_lag : float = 16.0
 
 var current_input: Vector2
 var current_velocity: Vector2
+
+func _ready():
+    Console.add_command("sfx", func(): SoundManager.play_sound(damaged_audio))
 
 func _process(delta):
     slowdown_cooldown = clampf(slowdown_cooldown - delta, 0, slowdown_time)
@@ -55,10 +60,20 @@ func _on_damageable_damaged(damage_params):
     if is_invincible:
         return
 
+    flash()
+    SoundManager.play_sound(damaged_audio)
     player_damaged.emit(damage_params)
     is_invincible = true
     var tween = create_tween()
     tween.tween_callback(func(): is_invincible = false).set_delay(invincibility_time)
+
+func flash():
+    var tween = create_tween()
+    tween.tween_method(set_flash, 1.0, 0, 0.2 * Engine.time_scale)
+
+func set_flash(f):
+    var material = mesh.material_overlay as ShaderMaterial
+    material.set_shader_parameter("flash_lerp", f)
 
 func _on_shoot_handler_fired():
     slowdown_cooldown = slowdown_time

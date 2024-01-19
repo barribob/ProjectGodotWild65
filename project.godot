@@ -21,6 +21,7 @@ SceneLoader="*res://App/Scripts/SceneLoader.gd"
 Console="*res://addons/console/Console.gd"
 TimeManager="*res://TimeManager.gd"
 EventBus="*res://EventBus.gd"
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
 [display]
 
@@ -31,7 +32,7 @@ window/size/window_height_override=810
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [gui]
 
