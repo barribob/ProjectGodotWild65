@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_4a4qm")
-name = "Clip Size"
+name = "Battery"
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_k8xsl"), ExtResource("2_k8xsl"), ExtResource("2_k8xsl"), ExtResource("2_k8xsl"), ExtResource("2_k8xsl")])

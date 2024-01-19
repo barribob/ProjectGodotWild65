@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_8p5jg")
+description = "Shoot two parallel shots on the first shot after reload"
 fire_rate = 0.0
 reload_speed = 0.0
 clip_size = 0

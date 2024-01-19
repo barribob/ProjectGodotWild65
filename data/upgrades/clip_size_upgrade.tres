@@ -4,10 +4,14 @@
 
 [resource]
 script = ExtResource("1_4a3sr")
+description = "Increase shots before reload by 1"
 fire_rate = 0.0
 reload_speed = 0.0
 clip_size = 1
 max_health = 0
 damage = 0.0
 pick_up_range = 0.0
-move_speed = 0
+move_speed = 0.0
+trigger_type = 0
+trigger_value = 0.0
+trigger_event = 0

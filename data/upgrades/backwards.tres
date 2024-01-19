@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_mfbwi")
+description = "Shoot bolts backwards"
 fire_rate = 0.0
 reload_speed = 0.0
 clip_size = 0

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://duqeanl3picr8"]
+
+[ext_resource type="Script" path="res://UpgradeType.gd" id="1_xyx2q"]
+[ext_resource type="Resource" uid="uid://dylgirfqn25rj" path="res://data/upgrades/parallel_on_first.tres" id="2_rv7nt"]
+
+[resource]
+script = ExtResource("1_xyx2q")
+name = "Full Charge"
+upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_rv7nt")])

@@ -4,10 +4,14 @@
 
 [resource]
 script = ExtResource("1_d7m1t")
+description = "Increase damage dealt by a bolt by 20%"
 fire_rate = 0.0
 reload_speed = 0.0
 clip_size = 0
 max_health = 0
 damage = 0.2
 pick_up_range = 0.0
-move_speed = 0
+move_speed = 0.0
+trigger_type = 0
+trigger_value = 0.0
+trigger_event = 0

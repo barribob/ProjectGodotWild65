@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_lxrcm")
-name = "Reload Speed"
+name = "Quick Charge"
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_16xk3"), ExtResource("2_16xk3"), ExtResource("2_16xk3"), ExtResource("2_16xk3"), ExtResource("2_16xk3")])

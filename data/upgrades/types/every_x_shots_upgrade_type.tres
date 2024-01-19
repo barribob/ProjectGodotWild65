@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://ys4n05u4gtny"]
+
+[ext_resource type="Script" path="res://UpgradeType.gd" id="1_yqcpi"]
+[ext_resource type="Resource" uid="uid://b8pfrvibpg2e4" path="res://data/upgrades/fan_every_5_shots.tres" id="2_32uvk"]
+
+[resource]
+script = ExtResource("1_yqcpi")
+name = "Static Discharge"
+upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_32uvk")])

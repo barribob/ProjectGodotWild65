@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_n0h6r")
+description = "On reload, shoot in a circle"
 fire_rate = 0.0
 reload_speed = 0.0
 clip_size = 0

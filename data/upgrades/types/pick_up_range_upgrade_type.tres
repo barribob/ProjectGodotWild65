@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_pgdpq")
-name = "Pick Up Range"
+name = "Magnetism"
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_vfwbv"), ExtResource("2_vfwbv"), ExtResource("2_vfwbv"), ExtResource("2_vfwbv"), ExtResource("2_vfwbv"), ExtResource("2_vfwbv")])

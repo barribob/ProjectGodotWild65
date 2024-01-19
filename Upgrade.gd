@@ -2,6 +2,7 @@ extends Resource
 
 class_name Upgrade
 
+@export var description: String
 @export var fire_rate: float
 @export var reload_speed: float
 @export var clip_size: int

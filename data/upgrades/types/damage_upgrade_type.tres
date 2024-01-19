@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_viy22")
-name = "Damage"
+name = "Voltage"
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_n2sh5"), ExtResource("2_n2sh5"), ExtResource("2_n2sh5"), ExtResource("2_n2sh5"), ExtResource("2_n2sh5")])
