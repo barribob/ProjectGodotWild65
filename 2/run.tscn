@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=19 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
 [ext_resource type="Script" path="res://CurrentRun.gd" id="1_xrvck"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://HealthBar.gd" id="5_7qsy8"]
 [ext_resource type="Script" path="res://2/AmmoDisplay.gd" id="6_klbc4"]
 [ext_resource type="Script" path="res://GameOver.gd" id="7_bjspu"]
+[ext_resource type="Script" path="res://2/UpgradesLabel.gd" id="7_kunp8"]
 [ext_resource type="Texture2D" uid="uid://csik7oxvt7tq3" path="res://addons/script-ide/icon/class.svg" id="7_vbrhe"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="7_x3db4"]
 [ext_resource type="Script" path="res://2/CameraFollow.gd" id="9_lsdtg"]
@@ -170,6 +171,10 @@ show_percentage = false
 layout_mode = 2
 theme_override_constants/separation = 10
 script = ExtResource("5_7qsy8")
+
+[node name="UpgradesLabel" type="Label" parent="HUDLayer/HUD/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_kunp8")
 
 [node name="Ammo" type="VBoxContainer" parent="HUDLayer/HUD"]
 layout_mode = 1
