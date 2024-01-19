@@ -22,7 +22,8 @@ func _ready():
 func _physics_process(delta):
     if player:
         look_at(player.global_position, Vector3.UP)
-        velocity = lerp(velocity, -transform.basis.z * speed * force_away_multiplier, delta * move_lag)
+        var new_velocity = -transform.basis.z * speed * force_away_multiplier
+        velocity = lerp(velocity, Vector3(new_velocity.x, 0, new_velocity.z), delta * move_lag)
     else:
         velocity = lerp(velocity, Vector2.ZERO, delta * move_lag)
     force_away_from_other_enemies()
