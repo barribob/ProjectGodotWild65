@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_k7778")
-name = "Reload Speed"
+name = "Reverse"
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_r6noq")])
