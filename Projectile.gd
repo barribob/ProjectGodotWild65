@@ -18,3 +18,7 @@ func _on_area_3d_area_entered(area):
     if area.has_method("damage"):
         area.damage({damage = damage})
     queue_free()
+
+func _on_area_3d_body_entered(body):
+    if not body.name == "Player":
+        queue_free()
