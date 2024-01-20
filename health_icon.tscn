@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://du7q50tfp3t0c"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mafsk"]
-size = Vector2(64, 64)
+[ext_resource type="Texture2D" uid="uid://d4ymw1pehfmm" path="res://art/orb.png" id="1_2nsru"]
 
 [node name="HealthIcon" type="TextureRect"]
-custom_minimum_size = Vector2(64, 64)
-texture = SubResource("PlaceholderTexture2D_mafsk")
+texture_filter = 1
+custom_minimum_size = Vector2(41, 43)
+texture = ExtResource("1_2nsru")

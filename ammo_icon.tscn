@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cim0578m7l3fv"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mafsk"]
-size = Vector2(64, 64)
+[ext_resource type="Texture2D" uid="uid://f8s0lyox3uki" path="res://art/ammo.png" id="1_vxkr3"]
 
 [node name="HealthIcon" type="TextureRect"]
-custom_minimum_size = Vector2(64, 64)
-texture = SubResource("PlaceholderTexture2D_mafsk")
+texture_filter = 1
+custom_minimum_size = Vector2(55, 19)
+texture = ExtResource("1_vxkr3")
