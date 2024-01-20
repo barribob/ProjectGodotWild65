@@ -15,7 +15,7 @@ const base_speed = 5.0
 
 var pick_up_range = base_pick_up_range
 var slowdown_while_shooting = 0.4
-var is_dead = false
+var is_frozen = false
 var slowdown_time = 0.3
 var slowdown_cooldown = 0.0
 var move_speed = base_speed
@@ -28,6 +28,7 @@ var current_velocity: Vector2
 
 func _ready():
     Console.add_command("sfx", func(): SoundManager.play_sound(damaged_audio))
+    EventBus.win_game.connect(_on_timer_label_win_game)
 
 func _process(delta):
     slowdown_cooldown = clampf(slowdown_cooldown - delta, 0, slowdown_time)
@@ -47,7 +48,7 @@ func _physics_process(delta):
 
     current_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     var direction = (transform.basis * Vector3(current_input.x, 0, current_input.y)).normalized()
-    if direction and not is_dead:
+    if direction and not is_frozen:
         velocity = lerp(velocity, direction * speed, delta * move_lag)
     else:
         velocity = lerp(velocity, Vector3.ZERO, delta * move_lag)
@@ -87,5 +88,8 @@ func _on_hud_leveled():
     add_child(level_up_particles)
 
 func _on_health_died():
-    is_dead = true
+    is_frozen = true
     hide()
+
+func _on_timer_label_win_game():
+    is_frozen = true

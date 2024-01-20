@@ -18,6 +18,7 @@ func _ready():
     add_child(model)
     model.animation_player.play("RunFoward")
     health = enemy_type.health
+    EventBus.win_game.connect(die_without_item)
 
 func _physics_process(delta):
     if player:
@@ -66,6 +67,9 @@ func die():
     item.position = position
     item.start(player)
     get_parent().add_child(item)
+    die_without_item()
+
+func die_without_item():
     player.player_damaged.disconnect(force_away_from_damaged_player)
     model.spawn_death_effect(get_parent())
     queue_free()

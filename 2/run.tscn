@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=23 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
 [ext_resource type="Script" path="res://CurrentRun.gd" id="1_xrvck"]
@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://csik7oxvt7tq3" path="res://addons/script-ide/icon/class.svg" id="7_vbrhe"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="7_x3db4"]
 [ext_resource type="Script" path="res://2/CameraFollow.gd" id="9_lsdtg"]
+[ext_resource type="Script" path="res://TimerLabel.gd" id="10_mahy0"]
 [ext_resource type="PackedScene" uid="uid://dusxy7p3s7x4v" path="res://environment/TheOVERWorld9.glb" id="13_rs1q1"]
+[ext_resource type="Script" path="res://GameWin.gd" id="14_3y6ov"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sy8ao"]
 sky_top_color = Color(0.211765, 0.313726, 0.552941, 1)
@@ -197,6 +199,21 @@ alignment = 2
 script = ExtResource("6_klbc4")
 full_texture = ExtResource("7_vbrhe")
 
+[node name="TimerLabel" type="Label" parent="HUDLayer/HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -950.0
+offset_top = 57.0
+offset_right = 950.0
+offset_bottom = 80.0
+grow_horizontal = 2
+size_flags_vertical = 0
+text = "3:30"
+horizontal_alignment = 1
+script = ExtResource("10_mahy0")
+
 [node name="UpgradesLayer" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -266,6 +283,63 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 text = "Exit Game"
+
+[node name="GameWin" type="Control" parent="EndGameLayer"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_3y6ov")
+main_menu_scene = "res://App/Scenes/Menus/MainMenu/MainMenu.tscn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndGameLayer/GameWin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -264.0
+offset_right = 65.0
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="EndGameLayer/GameWin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="Title" type="Label" parent="EndGameLayer/GameWin/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "You Survived!"
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="EndGameLayer/GameWin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("7_x3db4")
+
+[node name="MainMenuButton" type="Button" parent="EndGameLayer/GameWin/VBoxContainer/MenuButtons"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Main Menu"
+
+[node name="ExitButton" type="Button" parent="EndGameLayer/GameWin/VBoxContainer/MenuButtons"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Exit Game"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndGameLayer/GameWin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17047, 0, 0)
+shape = SubResource("BoxShape3D_a4f4e")
 
 [node name="CameraFollow" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("9_lsdtg")
@@ -591,3 +665,5 @@ shape = SubResource("BoxShape3D_pp6dg")
 [connection signal="pressed" from="EndGameLayer/GameOver/VBoxContainer/MenuButtons/RestartButton" to="EndGameLayer/GameOver" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="EndGameLayer/GameOver/VBoxContainer/MenuButtons/MainMenuButton" to="EndGameLayer/GameOver" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="EndGameLayer/GameOver/VBoxContainer/MenuButtons/ExitButton" to="EndGameLayer/GameOver" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="EndGameLayer/GameWin/VBoxContainer/MenuButtons/MainMenuButton" to="EndGameLayer/GameWin" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="EndGameLayer/GameWin/VBoxContainer/MenuButtons/ExitButton" to="EndGameLayer/GameWin" method="_on_exit_button_pressed"]

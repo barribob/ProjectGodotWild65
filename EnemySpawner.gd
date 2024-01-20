@@ -10,9 +10,11 @@ class_name EnemySpawner
 @onready var enemy_scene = load("res://enemy.tscn")
 
 var current_wave_index
+var stop_spawning = false
 
 func _ready():
     Console.add_command("sp", start_waves)
+    EventBus.win_game.connect(_on_timer_label_win_game)
 
 func start_waves():
     current_wave_index = -1
@@ -30,6 +32,9 @@ func _start_spawning():
     tween.tween_callback(_start_spawning)
 
 func _spawn_enemy():
+    if stop_spawning:
+        return
+
     var available_positions = [] + spawn_positions.get_children()
 
     while available_positions.size() > 0:
@@ -42,3 +47,6 @@ func _spawn_enemy():
             enemy_instance.position = random_position.global_position
             add_child(enemy_instance)
             return
+
+func _on_timer_label_win_game():
+    stop_spawning = true
