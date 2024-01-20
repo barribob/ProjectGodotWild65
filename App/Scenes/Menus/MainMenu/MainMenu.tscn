@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6k5nnpbypshi"]
+[gd_scene load_steps=21 format=3 uid="uid://c6k5nnpbypshi"]
 
 [ext_resource type="Script" path="res://App/Scenes/Menus/MainMenu/MainMenu.gd" id="1"]
+[ext_resource type="Theme" uid="uid://cfu445y3vjite" path="res://data/theme.tres" id="1_3t6sn"]
 [ext_resource type="PackedScene" uid="uid://bvwl11s2p0hd" path="res://App/Scenes/Menus/OptionsMenu/MasterOptionsMenu.tscn" id="2_ewwbc"]
 [ext_resource type="PackedScene" uid="uid://t2dui8ppm3a4" path="res://App/Scenes/Credits/Credits.tscn" id="3_lcwf5"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="4_l1ebe"]
@@ -50,7 +51,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MarginContainer/VBoxContainer/MenuMargin/MenuButtons:modulate")
+tracks/3/path = NodePath("MenuMargin/MenuButtons:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -102,7 +103,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MarginContainer/VBoxContainer/MenuMargin/MenuButtons:modulate")
+tracks/2/path = NodePath("MenuMargin/MenuButtons:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -221,7 +222,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MarginContainer/VBoxContainer/MenuMargin/MenuButtons:modulate")
+tracks/3/path = NodePath("MenuMargin/MenuButtons:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -302,6 +303,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_3t6sn")
 script = ExtResource("1")
 game_scene_path = "res://1/main.tscn"
 options_packed_scene = ExtResource("2_ewwbc")
@@ -336,6 +338,50 @@ grow_horizontal = 0
 grow_vertical = 0
 horizontal_alignment = 2
 
+[node name="MenuMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 125.0
+offset_right = -641.0
+size_flags_vertical = 3
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="MenuButtons" type="VBoxContainer" parent="MenuMargin"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("4_l1ebe")
+
+[node name="PlayButton" type="Button" parent="MenuMargin/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="MenuMargin/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Options
+"
+
+[node name="CreditsButton" type="Button" parent="MenuMargin/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Credits"
+
+[node name="ExitButton" type="Button" parent="MenuMargin/MenuButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Exit"
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -368,46 +414,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="MenuMargin" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="MenuButtons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MenuMargin"]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 16
-alignment = 1
-script = ExtResource("4_l1ebe")
-
-[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/MenuMargin/MenuButtons"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 40)
-layout_mode = 2
-text = "Play"
-
-[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer/MenuMargin/MenuButtons"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 40)
-layout_mode = 2
-text = "Options
-"
-
-[node name="CreditsButton" type="Button" parent="MarginContainer/VBoxContainer/MenuMargin/MenuButtons"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 40)
-layout_mode = 2
-text = "Credits"
-
-[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/MenuMargin/MenuButtons"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 40)
-layout_mode = 2
-text = "Exit"
 
 [node name="OptionsContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -460,8 +466,8 @@ text = "Back"
 [node name="UISoundController" type="Node" parent="."]
 script = ExtResource("6_bs342")
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/MenuMargin/MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuMargin/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuMargin/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuMargin/MenuButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MenuMargin/MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="FlowControlContainer/FlowControl/BackButton" to="." method="_on_back_button_pressed"]

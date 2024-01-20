@@ -4,5 +4,5 @@
 
 [node name="HealthIcon" type="TextureRect"]
 texture_filter = 1
-custom_minimum_size = Vector2(55, 19)
+custom_minimum_size = Vector2(82.5, 28.5)
 texture = ExtResource("1_vxkr3")

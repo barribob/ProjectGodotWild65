@@ -54,7 +54,7 @@ script = ExtResource("1_xrvck")
 environment = SubResource("Environment_ach2a")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.611003, -0.789813, 0.0535753, 0.0319309, 0.0922108, 0.995228, -0.790984, -0.606376, 0.0815605, 0, 4.29437, 0)
+transform = Transform3D(0.611003, -0.789813, 0.0535752, 0.0319309, 0.0922108, 0.995227, -0.790984, -0.606376, 0.0815605, 0, 4.29437, 0)
 visible = false
 light_energy = 0.1
 directional_shadow_mode = 0
@@ -64,8 +64,9 @@ unique_name_in_owner = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00274, 0)
-light_energy = 1.5
+light_energy = 3.0
 light_size = 0.006
+light_specular = 0.0
 omni_range = 20.0
 
 [node name="SpawnPositions" type="Node3D" parent="Player"]
