@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyWaves" load_steps=9 format=3 uid="uid://cxihbbxfrrs8t"]
+[gd_resource type="Resource" script_class="EnemyWaves" load_steps=11 format=3 uid="uid://cxihbbxfrrs8t"]
 
 [ext_resource type="Script" path="res://EnemyWaves.gd" id="1_1q0wo"]
 [ext_resource type="Resource" uid="uid://dwyak2p8fd80h" path="res://data/enemy_type_1.tres" id="2_752yq"]
@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://41p26cbc6pu" path="res://data/waves/enemy_spawn_2.tres" id="5_ybeyo"]
 [ext_resource type="Resource" uid="uid://bmbu8uf8880bg" path="res://data/waves/enemy_spawn_1_10.tres" id="6_toc31"]
 [ext_resource type="Resource" uid="uid://cnka4867awrgp" path="res://data/waves/enemy_spawn_2_10.tres" id="7_juja2"]
+[ext_resource type="Resource" uid="uid://c260s38yyyjti" path="res://data/waves/enemy_spawn_1_20.tres" id="8_7lfqs"]
+[ext_resource type="Resource" uid="uid://cpi6t8pi1hka0" path="res://data/waves/enemy_spawn_2_20.tres" id="9_x6j2s"]
 
 [sub_resource type="Resource" id="Resource_x8dkp"]
 script = ExtResource("3_mtume")
@@ -17,4 +19,4 @@ in_between_delay = 0.2
 
 [resource]
 script = ExtResource("1_1q0wo")
-waves = Array[ExtResource("3_mtume")]([SubResource("Resource_x8dkp"), ExtResource("4_hgome"), ExtResource("4_hgome"), ExtResource("4_hgome"), ExtResource("4_hgome"), ExtResource("5_ybeyo"), ExtResource("4_hgome"), ExtResource("6_toc31"), ExtResource("5_ybeyo"), ExtResource("5_ybeyo"), ExtResource("4_hgome"), ExtResource("7_juja2"), ExtResource("6_toc31"), ExtResource("4_hgome"), ExtResource("5_ybeyo"), ExtResource("6_toc31"), ExtResource("6_toc31"), ExtResource("5_ybeyo"), ExtResource("7_juja2"), ExtResource("4_hgome"), ExtResource("6_toc31"), ExtResource("6_toc31"), ExtResource("7_juja2"), ExtResource("7_juja2"), ExtResource("7_juja2")])
+waves = Array[ExtResource("3_mtume")]([SubResource("Resource_x8dkp"), ExtResource("4_hgome"), ExtResource("4_hgome"), ExtResource("4_hgome"), ExtResource("4_hgome"), ExtResource("5_ybeyo"), ExtResource("4_hgome"), ExtResource("6_toc31"), ExtResource("5_ybeyo"), ExtResource("5_ybeyo"), ExtResource("4_hgome"), ExtResource("7_juja2"), ExtResource("6_toc31"), ExtResource("4_hgome"), ExtResource("5_ybeyo"), ExtResource("6_toc31"), ExtResource("6_toc31"), ExtResource("5_ybeyo"), ExtResource("7_juja2"), ExtResource("4_hgome"), ExtResource("6_toc31"), ExtResource("6_toc31"), ExtResource("7_juja2"), ExtResource("7_juja2"), ExtResource("7_juja2"), ExtResource("4_hgome"), ExtResource("8_7lfqs"), ExtResource("6_toc31"), ExtResource("8_7lfqs"), ExtResource("6_toc31"), ExtResource("5_ybeyo"), ExtResource("6_toc31"), ExtResource("9_x6j2s"), ExtResource("7_juja2"), ExtResource("9_x6j2s"), ExtResource("8_7lfqs"), ExtResource("9_x6j2s"), ExtResource("8_7lfqs"), ExtResource("7_juja2"), ExtResource("6_toc31"), ExtResource("8_7lfqs"), ExtResource("9_x6j2s"), ExtResource("8_7lfqs"), ExtResource("9_x6j2s"), ExtResource("8_7lfqs")])
