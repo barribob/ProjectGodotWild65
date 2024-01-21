@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6k5nnpbypshi"]
+[gd_scene load_steps=22 format=3 uid="uid://c6k5nnpbypshi"]
 
 [ext_resource type="Script" path="res://App/Scenes/Menus/MainMenu/MainMenu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://cfu445y3vjite" path="res://data/theme.tres" id="1_3t6sn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://t2dui8ppm3a4" path="res://App/Scenes/Credits/Credits.tscn" id="3_lcwf5"]
 [ext_resource type="Script" path="res://App/Scripts/CaptureFocus.gd" id="4_l1ebe"]
 [ext_resource type="Script" path="res://App/Scripts/UISoundController.gd" id="6_bs342"]
+[ext_resource type="Script" path="res://App/Scenes/Menus/MainMenu/ButtonSound.gd" id="6_jffee"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -395,6 +396,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 40)
 layout_mode = 2
 text = "Play"
+script = ExtResource("6_jffee")
 
 [node name="OptionsButton" type="Button" parent="MenuMargin/MenuButtons"]
 unique_name_in_owner = true

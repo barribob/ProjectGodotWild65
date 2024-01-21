@@ -102,4 +102,4 @@ var footstep_time = 0.0
 func play_footstep():
     if velocity.length_squared() > 0.5 and Utils.leq(footstep_time, 0):
         footstep_time = min_time_between_footsteps
-        SoundManager.play_sound(footstep_sounds[randi_range(0, footstep_sounds.size() - 1)]).volume_db = -15
+        SoundManager.play_sound(footstep_sounds[randi_range(0, footstep_sounds.size() - 1)]).volume_db = -10

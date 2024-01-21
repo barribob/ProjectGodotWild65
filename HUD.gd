@@ -9,6 +9,7 @@ var current_level = 0
 @onready var exp_bar = %ExpBar
 @onready var level_data: LevelsData = load("res://data/levels_data.tres")
 @onready var level_up_sound = load("res://sounds/Player_level_up_SFX.wav")
+@onready var exp_sound = load("res://sounds/XP_Pickup_SFX.wav")
 
 func _ready():
     Console.add_command("exp", func(e): gain_exp(int(e)), 1)
@@ -18,6 +19,7 @@ func _ready():
 
 func gain_exp(amt):
     exp += amt
+    SoundManager.play_sound(exp_sound)
     while exp >= max_exp:
         exp -= max_exp
         current_level += 1

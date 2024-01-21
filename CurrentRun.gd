@@ -5,5 +5,5 @@ extends Node3D
 
 func _ready():
     if (!OS.is_debug_build()):
-        SoundManager.play_music_at_volume(music, -10)
+        SoundManager.play_music_at_volume(music, -5)
         spawner.start_waves()

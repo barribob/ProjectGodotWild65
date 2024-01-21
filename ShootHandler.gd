@@ -109,7 +109,7 @@ var shot_sound_time = 0.0
 
 func create_projectile():
     if Utils.leq(shot_sound_time, 0.0):
-        SoundManager.play_sound(shoot_sound).volume_db = -10
+        SoundManager.play_sound(shoot_sound)
         shot_sound_time = min_time_between_shot_sounds
     var b = projectile.instantiate()
     b.transform = projectile_output.global_transform
