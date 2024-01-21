@@ -309,6 +309,7 @@ script = ExtResource("1")
 game_scene_path = "res://1/main.tscn"
 options_packed_scene = ExtResource("2_ewwbc")
 credits_packed_scene = ExtResource("3_lcwf5")
+version_name = "0.1"
 
 [node name="MenuAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
