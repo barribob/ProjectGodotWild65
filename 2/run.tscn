@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dh8efijj0mc1x"]
+[gd_scene load_steps=26 format=3 uid="uid://dh8efijj0mc1x"]
 
 [ext_resource type="PackedScene" uid="uid://dpg42bk8y2tmo" path="res://enemy_spawner.tscn" id="1_dupvs"]
 [ext_resource type="Script" path="res://CurrentRun.gd" id="1_xrvck"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" path="res://TimerLabel.gd" id="10_mahy0"]
 [ext_resource type="Script" path="res://GameWin.gd" id="14_3y6ov"]
 [ext_resource type="PackedScene" uid="uid://bkaiqxqboakgc" path="res://map.tscn" id="16_llhd8"]
+[ext_resource type="Script" path="res://App/Scripts/PauseMenuController.gd" id="18_p5nwf"]
+[ext_resource type="PackedScene" uid="uid://cdwvtbtwmrqbn" path="res://App/Scenes/Menus/PauseMenu/PauseMenu.tscn" id="19_uqjjt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sy8ao"]
 sky_top_color = Color(0.211765, 0.313726, 0.552941, 1)
@@ -287,6 +289,7 @@ process_mode = 3
 visible = false
 
 [node name="EndGameLayer" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="GameOver" type="Control" parent="EndGameLayer"]
 process_mode = 3
@@ -733,6 +736,10 @@ shape = SubResource("BoxShape3D_pp6dg")
 
 [node name="TheOVERWorld9" parent="Environment" instance=ExtResource("16_llhd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106, -3.3, -140)
+
+[node name="PauseMenuController" type="Node" parent="."]
+script = ExtResource("18_p5nwf")
+pause_menu_packed = ExtResource("19_uqjjt")
 
 [connection signal="player_damaged" from="Player" to="HUDLayer/HUD/MarginContainer/VBoxContainer/Health" method="_on_player_player_damaged"]
 [connection signal="leveled" from="HUDLayer/HUD" to="Player" method="_on_hud_leveled"]

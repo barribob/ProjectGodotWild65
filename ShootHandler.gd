@@ -12,6 +12,7 @@ signal first_fired
 @onready var projectile_output = $"../RotationalPivot/Marker3D"
 @onready var projectile = load("res://projectile.tscn")
 @onready var animation_tree = %AnimationTree
+@onready var shoot_sound = load("res://sounds/Player_Gun_Shoot_SFX-001.wav")
 
 const base_shoot_interval = 0.3
 const base_clip_size = 5
@@ -54,6 +55,7 @@ func _ready():
     current_ammo = base_clip_size
 
 func _process(delta):
+    shot_sound_time = clampf(shot_sound_time - delta, 0.0, shot_sound_time)
     reticle.global_position = Utils.get_3d_mouse_pos(0.1, self, get_viewport().get_camera_3d())
     pivot.look_at(reticle.global_position)
 
@@ -102,7 +104,13 @@ func _unhandled_input(event):
         if !shoot_button_down:
             animation_tree.set("parameters/UpperBodyBlend/blend_amount", 0.0)
 
+var min_time_between_shot_sounds = 0.1
+var shot_sound_time = 0.0
+
 func create_projectile():
+    if Utils.leq(shot_sound_time, 0.0):
+        SoundManager.play_sound(shoot_sound).volume_db = -10
+        shot_sound_time = min_time_between_shot_sounds
     var b = projectile.instantiate()
     b.transform = projectile_output.global_transform
     owner.get_parent().add_child(b)
