@@ -35,5 +35,5 @@ tangential_accel_min = 10.0
 tangential_accel_max = 15.0
 scale_amount_min = 0.5
 scale_amount_max = 2.0
-color = Color(1.1, 1.1, 1.1, 1)
+color = Color(0.71, 1.5, 0.86, 1)
 script = ExtResource("1_5r8bp")
