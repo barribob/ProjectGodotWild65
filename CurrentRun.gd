@@ -4,6 +4,5 @@ extends Node3D
 @onready var spawner = $EnemySpawner
 
 func _ready():
-    if (!OS.is_debug_build()):
-        SoundManager.play_music_at_volume(music, -5)
-        spawner.start_waves()
+    SoundManager.play_music_at_volume(music, -5)
+    spawner.start_waves()
