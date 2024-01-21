@@ -8,8 +8,8 @@ signal player_damaged(damage_params)
 @onready var reticle = $ShootHandler/Reticle
 @onready var level_up_particle_scene = load("res://level_up_particles.tscn")
 @onready var mesh: MeshInstance3D = $Model/RotationFix/PlayerRobot/metarig/Skeleton3D/Cube
-@onready var damaged_audio = load("res://sounds/Player_Damage_Hit_SFX_v1.wav")
 @onready var footstep_sounds = [load("res://sounds/Player_foot_step_1_SFX.wav"), load("res://sounds/Player_foot_step_2_SFX.wav")]
+
 
 const base_pick_up_range = 2.5
 const base_speed = 5.0
@@ -28,7 +28,6 @@ var current_input: Vector2
 var current_velocity: Vector2
 
 func _ready():
-    Console.add_command("sfx", func(): SoundManager.play_sound(damaged_audio))
     EventBus.win_game.connect(_on_timer_label_win_game)
 
 func _process(delta):
@@ -65,7 +64,6 @@ func _on_damageable_damaged(damage_params):
         return
 
     flash()
-    SoundManager.play_sound(damaged_audio)
     player_damaged.emit(damage_params)
     is_invincible = true
     var tween = create_tween()

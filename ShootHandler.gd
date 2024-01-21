@@ -13,6 +13,8 @@ signal first_fired
 @onready var projectile = load("res://projectile.tscn")
 @onready var animation_tree = %AnimationTree
 @onready var shoot_sound = load("res://sounds/Player_Gun_Shoot_SFX-001.wav")
+@onready var start_reload = load("res://sounds/Player_gun_reload_start_SFX.wav")
+@onready var end_reload = load("res://sounds/Player_gun_reload_end_SFX.wav")
 
 const base_shoot_interval = 0.3
 const base_clip_size = 5
@@ -65,6 +67,7 @@ func _process(delta):
             current_ammo = clip_size
             is_reloading = false
             reload_finish.emit()
+            SoundManager.play_sound(end_reload)
 
     shoot_cooldown = clampf(shoot_cooldown - delta, 0, shoot_interval)
 
@@ -92,11 +95,13 @@ func _process(delta):
             reload_cooldown = reload_time
             is_reloading = true
             reload_start.emit(reload_time)
+            SoundManager.play_sound(start_reload)
     elif not is_reloading and current_ammo < clip_size and Utils.geq(idle_time, time_idle_to_auto_reload):
         upper_body_animation.travel("idle")
         reload_cooldown = reload_time
         is_reloading = true
         reload_start.emit(reload_time)
+        SoundManager.play_sound(start_reload)
 
 func _unhandled_input(event):
     if event is InputEventMouseButton and event.is_action("shoot"):
