@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://ud0pffngw5pj"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=4 format=3 uid="uid://ud0pffngw5pj"]
 
 [ext_resource type="Script" path="res://UpgradeType.gd" id="1_fr20u"]
 [ext_resource type="Resource" uid="uid://4m256suruxy4" path="res://data/upgrades/parallel_on_last.tres" id="2_5xj7v"]
+[ext_resource type="Texture2D" uid="uid://bxfvy0pxs54r" path="res://art/Final Spark.png" id="2_dh437"]
 
 [resource]
 script = ExtResource("1_fr20u")
 name = "Final Spark"
+texture = ExtResource("2_dh437")
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_5xj7v")])

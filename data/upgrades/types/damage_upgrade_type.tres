@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://pxjghrowxe8"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=4 format=3 uid="uid://pxjghrowxe8"]
 
 [ext_resource type="Script" path="res://UpgradeType.gd" id="1_viy22"]
+[ext_resource type="Texture2D" uid="uid://bldjfwx2wghdl" path="res://art/Voltage.png" id="2_ladi6"]
 [ext_resource type="Resource" uid="uid://wg7nefxaqkmc" path="res://data/upgrades/damage_upgrade.tres" id="2_n2sh5"]
 
 [resource]
 script = ExtResource("1_viy22")
 name = "Voltage"
+texture = ExtResource("2_ladi6")
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_n2sh5"), ExtResource("2_n2sh5"), ExtResource("2_n2sh5"), ExtResource("2_n2sh5"), ExtResource("2_n2sh5")])

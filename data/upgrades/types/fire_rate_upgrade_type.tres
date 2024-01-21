@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://csu618ldxey6v"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=4 format=3 uid="uid://csu618ldxey6v"]
 
 [ext_resource type="Script" path="res://UpgradeType.gd" id="1_2yccn"]
 [ext_resource type="Resource" uid="uid://ci4s5kqb4jfu6" path="res://data/upgrades/fire_rate_upgrade.tres" id="2_cfyxv"]
+[ext_resource type="Texture2D" uid="uid://dhtsbiqeb0m8l" path="res://art/Hertz.png" id="2_dtwrh"]
 
 [resource]
 script = ExtResource("1_2yccn")
 name = "Hertz"
+texture = ExtResource("2_dtwrh")
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_cfyxv"), ExtResource("2_cfyxv"), ExtResource("2_cfyxv"), ExtResource("2_cfyxv"), ExtResource("2_cfyxv")])

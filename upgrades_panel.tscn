@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://psj8ws7tw4fe"]
+[gd_scene load_steps=4 format=3 uid="uid://psj8ws7tw4fe"]
 
 [ext_resource type="Theme" uid="uid://cfu445y3vjite" path="res://data/theme.tres" id="1_iyl54"]
 [ext_resource type="Script" path="res://UpgradePanel.gd" id="2_32h8s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ls4e"]
+bg_color = Color(0.415686, 0.415686, 0.415686, 0.439216)
 
 [node name="UpgradesPanel" type="Control"]
 layout_mode = 3
@@ -28,6 +31,7 @@ size_flags_horizontal = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ls4e")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer"]
 layout_mode = 2
@@ -39,5 +43,6 @@ alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/UpgradesContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Upgrades"
 horizontal_alignment = 1

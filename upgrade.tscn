@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://UpgradeChoice.gd" id="1_dllha"]
 [ext_resource type="StyleBox" uid="uid://dbf62ywv2qu0f" path="res://data/invisible.tres" id="1_tc4cx"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mt5pq"]
-size = Vector2(128, 128)
+[ext_resource type="Texture2D" uid="uid://hrj7tpn15hep" path="res://art/Overcharge.png" id="2_jfyox"]
 
 [node name="Upgrade" type="PanelContainer"]
 script = ExtResource("1_dllha")
@@ -15,15 +13,18 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_mt5pq")
-
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "epic upgrade description that might become pretty long"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_jfyox")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2

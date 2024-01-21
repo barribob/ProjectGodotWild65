@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://bmh3s8op3yq1e"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=4 format=3 uid="uid://bmh3s8op3yq1e"]
 
 [ext_resource type="Script" path="res://UpgradeType.gd" id="1_4a4qm"]
 [ext_resource type="Resource" uid="uid://cp6ta1ecqkhp3" path="res://data/upgrades/clip_size_upgrade.tres" id="2_k8xsl"]
+[ext_resource type="Texture2D" uid="uid://dnuatuwdxy3p8" path="res://art/Battery.png" id="2_myd2c"]
 
 [resource]
 script = ExtResource("1_4a4qm")
 name = "Battery"
+texture = ExtResource("2_myd2c")
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_k8xsl"), ExtResource("2_k8xsl"), ExtResource("2_k8xsl"), ExtResource("2_k8xsl"), ExtResource("2_k8xsl")])

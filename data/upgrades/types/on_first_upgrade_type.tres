@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://duqeanl3picr8"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=4 format=3 uid="uid://duqeanl3picr8"]
 
 [ext_resource type="Script" path="res://UpgradeType.gd" id="1_xyx2q"]
+[ext_resource type="Texture2D" uid="uid://csj3885om7m1j" path="res://art/Full Charge.png" id="2_p0w63"]
 [ext_resource type="Resource" uid="uid://dylgirfqn25rj" path="res://data/upgrades/parallel_on_first.tres" id="2_rv7nt"]
 
 [resource]
 script = ExtResource("1_xyx2q")
 name = "Full Charge"
+texture = ExtResource("2_p0w63")
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_rv7nt")])

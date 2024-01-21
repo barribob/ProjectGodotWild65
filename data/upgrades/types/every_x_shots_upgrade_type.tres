@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://ys4n05u4gtny"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=4 format=3 uid="uid://ys4n05u4gtny"]
 
 [ext_resource type="Script" path="res://UpgradeType.gd" id="1_yqcpi"]
 [ext_resource type="Resource" uid="uid://b8pfrvibpg2e4" path="res://data/upgrades/fan_every_5_shots.tres" id="2_32uvk"]
+[ext_resource type="Texture2D" uid="uid://bu30oll5iqngm" path="res://art/Static Discharge.png" id="2_ngets"]
 
 [resource]
 script = ExtResource("1_yqcpi")
 name = "Static Discharge"
+texture = ExtResource("2_ngets")
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_32uvk")])

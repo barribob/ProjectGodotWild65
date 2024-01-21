@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeType" load_steps=3 format=3 uid="uid://dvcpejl5kj8co"]
+[gd_resource type="Resource" script_class="UpgradeType" load_steps=4 format=3 uid="uid://dvcpejl5kj8co"]
 
 [ext_resource type="Script" path="res://UpgradeType.gd" id="1_471gr"]
+[ext_resource type="Texture2D" uid="uid://hrj7tpn15hep" path="res://art/Overcharge.png" id="2_epcy3"]
 [ext_resource type="Resource" uid="uid://bttwbd26b2441" path="res://data/upgrades/circle_on_reload.tres" id="2_tcf8g"]
 
 [resource]
 script = ExtResource("1_471gr")
 name = "Overcharge"
+texture = ExtResource("2_epcy3")
 upgrades = Array[Resource("res://Upgrade.gd")]([ExtResource("2_tcf8g")])
