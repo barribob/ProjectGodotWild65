@@ -362,7 +362,7 @@ layout_mode = 2
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "GodotWild65"
+text = "Surge Survivors"
 horizontal_alignment = 1
 vertical_alignment = 1
 
