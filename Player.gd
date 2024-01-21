@@ -9,7 +9,7 @@ signal player_damaged(damage_params)
 @onready var level_up_particle_scene = load("res://level_up_particles.tscn")
 @onready var mesh: MeshInstance3D = $Model/RotationFix/PlayerRobot/metarig/Skeleton3D/Cube
 @onready var footstep_sounds = [load("res://sounds/Player_foot_step_1_SFX.wav"), load("res://sounds/Player_foot_step_2_SFX.wav")]
-
+@onready var spawn_sound = load("res://sounds/Player_spawn_SFX.wav")
 
 const base_pick_up_range = 2.5
 const base_speed = 5.0
@@ -29,6 +29,9 @@ var current_velocity: Vector2
 
 func _ready():
     EventBus.win_game.connect(_on_timer_label_win_game)
+    await get_tree().create_timer(0.5).timeout
+    flash()
+    SoundManager.play_sound(spawn_sound)
 
 func _process(delta):
     slowdown_cooldown = clampf(slowdown_cooldown - delta, 0, slowdown_time)
