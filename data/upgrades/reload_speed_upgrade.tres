@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_rbfyi")
-description = "Increases reload time by 15%"
+description = "Reduce reload time by 20%"
 fire_rate = 0.0
-reload_speed = 0.15
+reload_speed = 0.2
 clip_size = 0
 max_health = 0
 damage = 0.0
