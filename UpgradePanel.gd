@@ -4,11 +4,12 @@ extends Control
 @onready var upgrades_container = %UpgradesContainer
 
 var upgrade_choices = []
+var num_upgrades = 4
 
 func _ready():
     Console.add_command("upgrade", func(upgrade_name): add_upgrade(load("res://data/upgrades/%s.tres" % upgrade_name), UpgradeType.new()), 1)
     Console.add_command("su", open_and_pause)
-    for i in 3:
+    for i in num_upgrades:
         var upgrade_choice = upgrade_choice_scene.instantiate()
         upgrades_container.add_child(upgrade_choice)
         upgrade_choices.append(upgrade_choice)
@@ -31,7 +32,7 @@ func open_and_pause():
     TimeManager.pause_tree()
     show()
     var upgrades = get_available_upgrades()
-    for i in 3:
+    for i in num_upgrades:
         var random = randi_range(0, upgrades.size() - 1)
         var upgrade_type = upgrades.keys()[random]
         upgrade_choices[i].set_upgrade({upgrade_type = upgrade_type, upgrade = upgrades[upgrade_type]})
