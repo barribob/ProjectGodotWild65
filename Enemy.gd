@@ -3,7 +3,6 @@ extends CharacterBody3D
 @onready var item_scene: PackedScene = load("res://item.tscn")
 @onready var damage_indicator_scene: PackedScene = load("res://damage_indicator.tscn")
 @onready var soft_collision_area: Area3D = $SoftCollision
-@onready var death_sound = load("res://sounds/Enemy_unit_death_SFX.wav")
 
 var player
 var speed
@@ -67,16 +66,15 @@ func damage(damage_params):
         die()
 
 func die():
-    SoundManager.play_sound(death_sound)
     var item = item_scene.instantiate()
     item.position = position
     item.start(player)
     get_parent().add_child(item)
     die_without_item()
+    model.spawn_death_effect(get_parent())
 
 func die_without_item():
     player.player_damaged.disconnect(force_away_from_damaged_player)
-    model.spawn_death_effect(get_parent())
     queue_free()
 
 func _on_damage_area_area_entered(area):

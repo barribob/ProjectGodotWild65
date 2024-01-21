@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b71lr0oe5qobf"]
+[gd_scene load_steps=6 format=3 uid="uid://b71lr0oe5qobf"]
 
-[ext_resource type="Script" path="res://TemporaryParticles.gd" id="1_ngynj"]
+[ext_resource type="Script" path="res://EnemyDeathParticles.gd" id="1_0573r"]
+[ext_resource type="AudioStream" uid="uid://cpjk36dcgw7qj" path="res://sounds/Enemy_unit_death_SFX.wav" id="2_8xdtg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4fqe"]
 vertex_color_use_as_albedo = true
@@ -31,4 +32,8 @@ initial_velocity_min = 3.0
 initial_velocity_max = 5.0
 scale_amount_max = 2.0
 color_initial_ramp = SubResource("Gradient_fal3d")
-script = ExtResource("1_ngynj")
+script = ExtResource("1_0573r")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_8xdtg")
+bus = &"SFX"
