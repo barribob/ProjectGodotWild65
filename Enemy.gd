@@ -37,7 +37,8 @@ func force_away_from_other_enemies():
     for collider in soft_collision_area.get_overlapping_areas():
         var force_away = global_position - collider.global_position
         var force_amt = 1 / clampf(force_away.length_squared(), 0.1, 1.0) * 0.5
-        velocity += force_away.normalized() * force_amt
+        var force = force_away.normalized() * force_amt
+        velocity += Vector3(force.x, 0, force.z)
 
 func init(in_player, type):
     player = in_player

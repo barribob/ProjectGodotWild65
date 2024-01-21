@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyWaves" load_steps=4 format=3 uid="uid://cugjnkgsneo7c"]
+
+[ext_resource type="Script" path="res://EnemyWaves.gd" id="1_oofbl"]
+[ext_resource type="Resource" uid="uid://c260s38yyyjti" path="res://data/waves/enemy_spawn_1_20.tres" id="8_3o0rb"]
+[ext_resource type="Resource" uid="uid://cpi6t8pi1hka0" path="res://data/waves/enemy_spawn_2_20.tres" id="9_qrin4"]
+
+[resource]
+script = ExtResource("1_oofbl")
+waves = Array[Resource("res://EnemySpawn.gd")]([ExtResource("8_3o0rb"), ExtResource("8_3o0rb"), ExtResource("9_qrin4"), ExtResource("8_3o0rb"), ExtResource("8_3o0rb")])

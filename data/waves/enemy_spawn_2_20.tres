@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("2_588f4")
 enemy_type = ExtResource("1_en37n")
-spawn_amount = 10
+spawn_amount = 20
 initial_delay = 5.0
 in_between_delay = 0.2

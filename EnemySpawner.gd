@@ -47,6 +47,7 @@ func _spawn_enemy():
             enemy_instance.position = random_position.global_position
             add_child(enemy_instance)
             return
+    print("couldn't spawn enemy")
 
 func _on_timer_label_win_game():
     stop_spawning = true
