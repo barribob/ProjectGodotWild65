@@ -9,6 +9,7 @@ signal player_damaged(damage_params)
 @onready var level_up_particle_scene = load("res://level_up_particles.tscn")
 @onready var mesh: MeshInstance3D = $Model/RotationFix/PlayerRobot/metarig/Skeleton3D/Cube
 @onready var damaged_audio = load("res://sounds/Player_Damage_Hit_SFX_v1.wav")
+@onready var footstep_sounds = [load("res://sounds/Player_foot_step_1_SFX.wav"), load("res://sounds/Player_foot_step_2_SFX.wav")]
 
 const base_pick_up_range = 2.5
 const base_speed = 5.0
@@ -32,6 +33,7 @@ func _ready():
 
 func _process(delta):
     slowdown_cooldown = clampf(slowdown_cooldown - delta, 0, slowdown_time)
+    footstep_time = clampf(footstep_time - delta, 0, footstep_time)
 
     var xz_velocity = Vector3(velocity.x, 0, velocity.z)
     var walk_dir = xz_velocity * model.basis
@@ -93,3 +95,11 @@ func _on_health_died():
 
 func _on_timer_label_win_game():
     is_frozen = true
+
+var min_time_between_footsteps = 0.35
+var footstep_time = 0.0
+
+func play_footstep():
+    if velocity.length_squared() > 0.5 and Utils.leq(footstep_time, 0):
+        footstep_time = min_time_between_footsteps
+        SoundManager.play_sound(footstep_sounds[randi_range(0, footstep_sounds.size() - 1)])
