@@ -2,18 +2,9 @@
 ## Collaborators
 
 ### Role
-Person 1
-Person 2
-[Person w/ Link]()
-
-
-## Sourced / Unaffiliated
-### Asset Type
-#### Use Case
-Author: [Name]()
-Source: [Domain : webpage.html]()
-License: [License]()
-
+Leoscave (Art and Models)
+Tony Brattoli (Music and Sounds)
+Barribob (Programming)
 
 ## Tools
 #### Godot
