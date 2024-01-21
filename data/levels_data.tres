@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_y86ds")
-levels = Array[int]([8, 12, 16, 20, 30, 35, 40, 45, 60, 70, 80, 90, 100])
+levels = Array[int]([7, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 100])
